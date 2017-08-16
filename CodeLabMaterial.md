@@ -4,9 +4,9 @@ Curso de Aplicaciones Móviles 2 - Grupo 2017 02
 ## Semana 1
 
 - Introducción al Curso
-- Material Design
+- Material Design (*)
 
-### [1] Bienvenido !
+### [1] Resumen
 
 ### [2] Descargar los ejemplos de clase
 
@@ -25,7 +25,7 @@ Despues de descargar y descomprimir el archivo, podemos encontrar dos carpetas
 - AM2Template
 - MaterialSample
 
-### [3] Revisar el proyecto base
+### [3] Configuración
 
 El proyecto base es "AM2Template" y lo abrimos con el IDE Android Studio
 
@@ -139,81 +139,117 @@ dependencies {
 }
 
 ```
-### [4] Explorar un nuevo proyecto android
+### [4] Crear Listas y grillas
 
-- Exploremos la Actividad Principal
+- Pasos para trabajar con listas y adaptadores
 
-```
-package com.isil.am2template;
+  1 . Obtener o crear un origen de datos , este componente es la colección de datos que queremos mostrar en una lista o grilla. Normalmente es un arraylist o un array.
 
-import android.animation.Animator;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.view.ViewAnimationUtils;
-import android.widget.ImageView;
-import android.widget.TextView;
+  2 . Crear una Entidad , normalmente cada item de la lista contiene propiedad y puede ser representado mediante una clase. Por ejemplo
 
-public class MainActivity extends AppCompatActivity {
+  ```
+  public class Pokemon {
 
-    private ImageView imageViewIsil;
-    private TextView textViewHello;
-    private View constraintLayoutContainer;
+    private int id;
+    private String name;
+    private int type1;
+    private String desc;
+    private String photo;
+  ...
 
+  ```
+
+  3 . Crear una celda, para esto creamos un layout que se usará como item en nuestra lista / grilla.
+
+  ```
+  <?xml version="1.0" encoding="utf-8"?>
+  <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="10dp">
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:gravity="center"
+          android:orientation="vertical">
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center_horizontal"
+              android:orientation="horizontal">
+              <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="CP"
+                  android:gravity="center"
+  android:textSize="14sp" />
+  ...
+  ```
+
+  4 . Crear un Adapter, este componente se va encargar de asociar el "origen de datos" con la vista (lista o grilla). Tambien nos permite administrar los elementos de la lista, por ejemplo, agregar o quitar items.
+
+  ```
+    public class PokedexAdapter extends RecyclerView.Adapter<PokedexAdapter.ViewHolder> {
+      private List<Pokemon> pokemonList;
+    private Context context;
+    ...
+
+  ```
+
+  ```
+      public static class ViewHolder extends RecyclerView.ViewHolder {
+           // each data item is just a string in this case
+           public TextView tviName;
+           public ImageView iviPhoto;
+           public View view;
+           public ViewHolder(View  v) {
+               super(v);
+               this.view = v;
+               tviName= (TextView) v.findViewById(R.id.tviName);
+               iviPhoto= (ImageView) v.findViewById(R.id.iviPhoto);
+           }
+    }
+    ...
+  ```
+
+  ```
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ui();
-        app();
+       public ViewHolder onCreateViewHolder(ViewGroup parent,
+                                                      int viewType) {
+           // create a new view
+           View v = LayoutInflater.from(parent.getContext())
+                   .inflate(R.layout.row_pokemon, parent, false);
+           // set the view's size, margins, paddings and layout parameters
+           ViewHolder vh = new ViewHolder(v);
+           return vh;
+   }
+   ...
+  ```
+
+  ```
+    @Override
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        // - get element from your dataset at this position
+        // - replace the contents of the view with that element
+        Pokemon pokemon= pokemonList.get(position);
+        holder.tviName.setText(pokemon.getName());
+        holder.iviPhoto.setImageBitmap(getBitmapFromAssets(pokemon.getPhoto()));
     }
+    ...
+  ```
 
-    private void app() {
-        imageViewIsil.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //updateText();
-                rippleEffect();
-            }
-        });
-    }
+  5 . 
 
-    private void rippleEffect() {
+### [5] Lanzar una nueva Actividad
 
-        int cx = (imageViewIsil.getLeft() + imageViewIsil.getRight()) / 2;
-        int cy = (imageViewIsil.getTop() + imageViewIsil.getBottom()) / 2;
-
-        int finalRadius = Math.max(constraintLayoutContainer.getWidth(), constraintLayoutContainer.getHeight());
-
-        Animator anim =
-                null;
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-            anim = ViewAnimationUtils.createCircularReveal(constraintLayoutContainer, cx, cy, 0, finalRadius);
-            anim.start();
-        }
-    }
-
-    private void updateText() {
-        textViewHello.setText("Hello Android");
-    }
-
-    private void ui() {
-        constraintLayoutContainer= findViewById(R.id.constraintLayoutContainer);
-        imageViewIsil= (ImageView) findViewById(R.id.imageViewIsil);
-        textViewHello= (TextView) findViewById(R.id.textViewHello);
-    }
-}
-
-```
-
-### [5] Ejecutar nuestro proyecto
+### [6] Agregar animaciones
 
 ```
   Run / Run App
 ```
 <img src="./images/screenshot1.png" height="480">
 
-### [6] Aprender más
+### [7] Felicitaciones
 
 - Página Oficial de Android https://developer.android.com/index.html
 
