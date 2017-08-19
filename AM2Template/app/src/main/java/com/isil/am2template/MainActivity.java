@@ -28,15 +28,16 @@ public class MainActivity extends AppCompatActivity {
         imageViewIsil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //bla bla bla bla
                 //updateText();
-                //rippleEffect();
-                showMessage();
+                rippleEffect();
+                //showMessage();
             }
         });
     }
 
     private void showMessage(){
-        snackbar.setText("Hello Android");
+        snackbar.setText("Hello IOS");
         snackbar.show();
     }
     private void rippleEffect() {
@@ -44,12 +45,13 @@ public class MainActivity extends AppCompatActivity {
         int cx = (imageViewIsil.getLeft() + imageViewIsil.getRight()) / 2;
         int cy = (imageViewIsil.getTop() + imageViewIsil.getBottom()) / 2;
 
-        int finalRadius = Math.max(constraintLayoutContainer.getWidth(), constraintLayoutContainer.getHeight());
+        int finalRadius = Math.max(constraintLayoutContainer.getWidth()/2, constraintLayoutContainer.getHeight()/2);
 
         Animator anim =
                 null;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
             anim = ViewAnimationUtils.createCircularReveal(constraintLayoutContainer, cx, cy, 0, finalRadius);
+            anim.setDuration(2000);
             anim.start();
         }
     }
