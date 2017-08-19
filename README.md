@@ -4,9 +4,15 @@ Curso de Aplicaciones Móviles 2 - Grupo 2017 02
 ## Semana 1
 
 - Introducción al Curso
+  - Presentación del curso
+  - Proyecto base 
+  
 - Material Design
+  - CodeLab Material Design [link](./CodeLabMaterial.md)
 
 ### [1] Bienvenido !
+
+Bienvenido al curso de aplicaciones móviles 2 , esta materia es teorico-práctico y la objetivo principal al finalizar este curso es desarrollar una aplicación Android funcional y subirlo a la tienda de Google Play.
 
 ### [2] Descargar los ejemplos de clase
 

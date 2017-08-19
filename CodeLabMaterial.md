@@ -1,7 +1,7 @@
 # am2_group2017_2
 Curso de Aplicaciones Móviles 2 - Grupo 2017 02
 
-## Semana 1
+## CodeLab Material Design
 
 - Introducción al Curso
 - Material Design (*)
@@ -23,127 +23,60 @@ https://github.com/emedinaa/am2_group2017_2/archive/S1_Introduction.zip
 Despues de descargar y descomprimir el archivo, podemos encontrar dos carpetas
 
 - AM2Template
-- MaterialSample
+- AM2MaterialDesign
 
 ### [3] Configuración
 
-El proyecto base es "AM2Template" y lo abrimos con el IDE Android Studio
+El proyecto  es "AM2MaterialDesign" y lo abrimos con el IDE Android Studio
 
 ```
   File / Open file or Project
 ```
 
-El proyecto tiene la siguiente estructura
-
-- build.gradle
-- [app] /
-  - build.gradle
-  - [src] /
-    - [main] /
-      - AndroidManifest.xml
-        - [java] /
-        - [res] /
-  - [build]/
-  - [libs]/
-
-¿Dónde se encuentra nuestro código?
-
-```
-  AM2Template / app / src / main /
-```
-
-Revisemos los archivos build.gradle
-
-- build.gradle del proyecto
-
-```
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
-
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.3'
-
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
-    }
-}
-
-allprojects {
-    repositories {
-        jcenter()
-    }
-}
-
-task clean(type: Delete) {
-    delete rootProject.buildDir
-}
-
-ext {
-    // Sdk and tools
-    minSdkVersion = 10
-    targetSdkVersion = 25
-    compileSdkVersion = 25
-    buildToolsVersion = '25.0.2'
-    constraintLayoutVersion='1.0.2'
-
-    // App dependencies
-    supportLibraryVersion = '25.3.1'
-    junitVersion = '4.12'
-}
-```
-- build.gradle de la App
-
-```
-apply plugin: 'com.android.application'
-
-android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
-
-    defaultConfig {
-        applicationId "com.isil.am2template"
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-}
-
-dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-
-    // App's dependencies
-    compile "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
-    compile "com.android.support:support-v4:$rootProject.supportLibraryVersion"
-
-    compile "com.android.support:cardview-v7:$rootProject.supportLibraryVersion"
-    compile "com.android.support:design:$rootProject.supportLibraryVersion"
-    compile "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
-    compile "com.android.support.constraint:constraint-layout:$constraintLayoutVersion"
-
-    // Dependencies for local unit tests
-    testCompile "junit:junit:$rootProject.ext.junitVersion"
-}
-
-```
 ### [4] Crear Listas y grillas
 
 - Pasos para trabajar con listas y adaptadores
 
   1 . Obtener o crear un origen de datos , este componente es la colección de datos que queremos mostrar en una lista o grilla. Normalmente es un arraylist o un array.
+  
+  ```
+  public List<Pokemon> generate(){
+        Pokemon pokemon= new Pokemon();
+        pokemon.setName("Abra");
+        pokemon.setPhoto("images/Abra.png");
+
+        Pokemon pokemon1= new Pokemon();
+        pokemon1.setName("Arcanine");
+        pokemon1.setPhoto("images/Arcanine.png");
+
+        Pokemon pokemon2= new Pokemon();
+        pokemon2.setName("Bulbasaur");
+        pokemon2.setPhoto("images/Bulbasaur.png");
+
+        Pokemon pokemon3= new Pokemon();
+        pokemon3.setName("Caterpie");
+        pokemon3.setPhoto("images/Caterpie.png");
+
+        Pokemon pokemon4= new Pokemon();
+        pokemon4.setName("Drowzee");
+        pokemon4.setPhoto("images/Drowzee.png");
+
+        Pokemon pokemon5= new Pokemon();
+        pokemon5.setName("Exeggcute");
+        pokemon5.setPhoto("images/Exeggcute.png");
+
+        Pokemon pokemon6= new Pokemon();
+        pokemon6.setName("Golem");
+        pokemon6.setPhoto("images/Golem.png");
+
+        Pokemon pokemon7= new Pokemon();
+        pokemon7.setName("Lickitung");
+        pokemon7.setPhoto("images/Lickitung.png");
+
+        Pokemon pokemon8= new Pokemon();
+        pokemon8.setName("Magmar");
+        pokemon8.setPhoto("images/Magmar.png");
+  ```
 
   2 . Crear una Entidad , normalmente cada item de la lista contiene propiedad y puede ser representado mediante una clase. Por ejemplo
 
@@ -238,20 +171,116 @@ dependencies {
     ...
   ```
 
-  5 . 
+  5 . Crear nuesta actividad con la lista o grilla
+  
+  ```
+    <?xml version="1.0" encoding="utf-8"?>
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      tools:context="com.isil.am2materialdesign.MainActivity">
+
+      <android.support.v7.widget.RecyclerView
+          android:id="@+id/recyclerViewPokemon"
+          android:layout_width="0dp"
+          android:layout_height="0dp"
+          android:layout_marginRight="0dp"
+          app:layout_constraintRight_toRightOf="parent"
+          android:layout_marginLeft="0dp"
+          app:layout_constraintLeft_toLeftOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          android:layout_marginTop="0dp"
+          app:layout_constraintBottom_toBottomOf="parent"
+          android:layout_marginBottom="0dp" />
+
+    </android.support.constraint.ConstraintLayout>
+  ```
+  
+  ```
+        private void ui() {
+        recyclerViewPokemon= (RecyclerView)findViewById(R.id.recyclerViewPokemon);
+        mLayoutManager = new GridLayoutManager(this,DEFAULT_SPANCOUNT);
+        recyclerViewPokemon.setLayoutManager(mLayoutManager);
+  ```
+  
+  6. Asociar el adapter con el origin de datos y con la lista (view)
+  
+  ```
+        private void renderPokemons(){
+        pokemonAdapter = new PokemonAdapter(this,pokemonList);
+        pokemonAdapter.setOnItemClickListener(this);
+        recyclerViewPokemon.setAdapter(pokemonAdapter);
+        }
+  ```
+  
 
 ### [5] Lanzar una nueva Actividad
 
-### [6] Agregar animaciones
+ ```
+   private void gotoDetailsAnimation(Pokemon pokemon,ImageView imageView){
+        Intent intent= new Intent(this,PokemonDetailsActivity.class);
+        intent.putExtra("POKEMON", pokemon);
+        intent.putExtra("IMAGE_TRANSITION", ViewCompat.getTransitionName(imageView));
 
+        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                this,
+                imageView,
+                ViewCompat.getTransitionName(imageView));
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            startActivity(intent,options.toBundle());
+        }
+    }
+  ```
+
+### [6] Recibir la información en una nueva actividad(pantalla)
+ ```
+   private void extras() {
+        if(getIntent()!=null && getIntent().getExtras()!=null){
+            pokemon= (Pokemon) getIntent().getExtras().getSerializable("POKEMON");
+            imageTransitionName= getIntent().getExtras().getString("IMAGE_TRANSITION");
+        }
+    }
+  ```
+
+### [7] Mostrar la información
+```
+    private void populate() {
+        if(pokemon!=null){
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                imageView.setTransitionName(imageTransitionName);
+            }
+
+            imageView.setImageBitmap(getBitmapFromAssets(pokemon.getPhoto()));
+            textViewName.setText(pokemon.getName());
+        }
+    }
+```
+
+### [8] Agregar animaciones
+```
+ ...
+ intent.putExtra("IMAGE_TRANSITION", ViewCompat.getTransitionName(imageView));
+
+        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                this,
+                imageView,
+                ViewCompat.getTransitionName(imageView));
+ ...
+```
+
+### [9] Ejecutar el proyecto
 ```
   Run / Run App
 ```
-<img src="./images/screenshot1.png" height="480">
+<img src="./images/screenshot2.png" height="480">  <img src="./images/screenshot3.png" height="480">
 
-### [7] Felicitaciones
+### [10] Felicitaciones
 
-- Página Oficial de Android https://developer.android.com/index.html
+Felicitaciones, completaste este codelab con éxito . No te olvides de seguir aprendiendo sobre Material Design en Android, te comparto unos links que te pueden servir : 
 
 - Material Design https://material.io/guidelines/material-design/introduction.html
 
