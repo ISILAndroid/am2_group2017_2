@@ -7,6 +7,7 @@ Curso de Aplicaciones Móviles 2 - Grupo 2017 02
 - Material Design (*)
 
 ### [1] Resumen
+En este CodeLab haremos un repaso sobre listas y adaptadores , usaremos los componentes recyclerview y cardview .Tambien veremos sobre navegación entre actividades y como pasar información entre ellas . Finalmente , agregaremos transiciones de material design  a nuestro ejemplo.
 
 ### [2] Descargar los ejemplos de clase
 
@@ -38,7 +39,7 @@ El proyecto  es "AM2MaterialDesign" y lo abrimos con el IDE Android Studio
 - Pasos para trabajar con listas y adaptadores
 
   1 . Obtener o crear un origen de datos , este componente es la colección de datos que queremos mostrar en una lista o grilla. Normalmente es un arraylist o un array.
-  
+
   ```
   public List<Pokemon> generate(){
         Pokemon pokemon= new Pokemon();
@@ -172,7 +173,7 @@ El proyecto  es "AM2MaterialDesign" y lo abrimos con el IDE Android Studio
   ```
 
   5 . Crear nuesta actividad con la lista o grilla
-  
+
   ```
     <?xml version="1.0" encoding="utf-8"?>
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -197,16 +198,16 @@ El proyecto  es "AM2MaterialDesign" y lo abrimos con el IDE Android Studio
 
     </android.support.constraint.ConstraintLayout>
   ```
-  
+
   ```
         private void ui() {
         recyclerViewPokemon= (RecyclerView)findViewById(R.id.recyclerViewPokemon);
         mLayoutManager = new GridLayoutManager(this,DEFAULT_SPANCOUNT);
         recyclerViewPokemon.setLayoutManager(mLayoutManager);
   ```
-  
+
   6. Asociar el adapter con el origin de datos y con la lista (view)
-  
+
   ```
         private void renderPokemons(){
         pokemonAdapter = new PokemonAdapter(this,pokemonList);
@@ -214,7 +215,7 @@ El proyecto  es "AM2MaterialDesign" y lo abrimos con el IDE Android Studio
         recyclerViewPokemon.setAdapter(pokemonAdapter);
         }
   ```
-  
+
 
 ### [5] Lanzar una nueva Actividad
 
@@ -280,7 +281,7 @@ El proyecto  es "AM2MaterialDesign" y lo abrimos con el IDE Android Studio
 
 ### [10] Felicitaciones
 
-Felicitaciones, completaste este codelab con éxito . No te olvides de seguir aprendiendo sobre Material Design en Android, te comparto unos links que te pueden servir : 
+Felicitaciones, completaste este codelab con éxito . No te olvides de seguir aprendiendo sobre Material Design en Android, te comparto unos links que te pueden servir :
 
 - Material Design https://material.io/guidelines/material-design/introduction.html
 

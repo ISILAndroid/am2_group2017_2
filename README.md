@@ -4,9 +4,9 @@ Curso de Aplicaciones Móviles 2 - Grupo 2017 02
 ## Semana 1
 
 - Introducción al Curso
-  - Presentación del curso
-  - Proyecto base 
-  
+  - Presentación del curso [link](https://docs.google.com/presentation/d/1NjcxAFW_61R7sipbhlQCo3Hg-5gIcuURjsPU2tAbNWE/edit?usp=sharing)
+  - Proyecto base
+
 - Material Design
   - CodeLab Material Design [link](./CodeLabMaterial.md)
 
