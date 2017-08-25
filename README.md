@@ -1,13 +1,6 @@
-# am2_group2017_2
-Curso de Aplicaciones Móviles 2 - Grupo 2017 02
-
-Instrutor : Eduardo José Medina Alfaro
-
-e-mail : isil@qd.pe
-
 ## HomeWork
 
-Aquí dejaré tareas para que refuercen lo aprendido en clase.
+En este branch les dejaré ejercicios para que refuercen lo aprendido en clase. Es uno o dos tareas por clase.
 
 ### Semana 1 - Introducción y Material Design
 
@@ -15,6 +8,7 @@ Aquí dejaré tareas para que refuercen lo aprendido en clase.
 
 ### Semana 2 - Fragments
 
+- Utiliza el proyecto "AM2Fragment", construye tus propios fragments ,con otro contenido y  agrega las transiciones de material design hechas en las semana 1. 
 
 ## Referencias
 
