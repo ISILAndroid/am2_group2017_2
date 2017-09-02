@@ -115,7 +115,7 @@ En este proyecto contamos con varias actividades
 
 - Fragments y Actividades
 
-<img src="./images/fragments_basic.jpg" height="480">
+<img src="./images/fragments_basic1.jpg" height="480">
 
 - Comunicación entre Actividades y Fragments
 
