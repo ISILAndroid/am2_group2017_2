@@ -32,6 +32,7 @@ public class BlankFragment extends Fragment {
     private String mParam2;
 
     private BlankFragmentListener mListener;
+    private View frameLayout;
 
     public BlankFragment() {
         // Required empty public constructor
@@ -68,7 +69,9 @@ public class BlankFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_blank, container, false);
+        View view= inflater.inflate(R.layout.fragment_blank, container, false);
+        frameLayout= view.findViewById(R.id.frameLayout);
+        return view;
     }
 
 
@@ -111,7 +114,8 @@ public class BlankFragment extends Fragment {
     }
 
     public void cambiarColorFondo(){
-        getView().findViewById(R.id.frameLayout).setBackgroundColor(Color.GREEN);
+        //getView().findViewById(R.id.frameLayout).setBackgroundColor(Color.GREEN);
+        frameLayout.setBackgroundColor(Color.GREEN);
     }
 
     /**

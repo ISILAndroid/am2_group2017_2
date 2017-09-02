@@ -24,6 +24,7 @@ implements BlankFragmentListener{
 
         //blankFragment.ejecutarAccionDesdeFragment("Hola Fragment");
         blankFragment.cambiarColorFondo();
+
     }
 
     @Override
