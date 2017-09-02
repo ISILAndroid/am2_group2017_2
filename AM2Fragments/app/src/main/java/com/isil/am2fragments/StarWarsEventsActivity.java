@@ -44,6 +44,7 @@ public class StarWarsEventsActivity extends AppCompatActivity {
 
     }
     private void ui() {
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         recyclerViewEvents= (RecyclerView)findViewById(R.id.recyclerViewEvents);
         recyclerViewEvents.setLayoutManager(new LinearLayoutManager(this));
 
@@ -68,5 +69,11 @@ public class StarWarsEventsActivity extends AppCompatActivity {
         Intent intent= new Intent(this,EventDetailsActivity.class);
         intent.putExtra("EVENT",starWarsEvent);
         startActivity(intent);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

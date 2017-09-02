@@ -102,8 +102,10 @@ public class BlankFragment extends Fragment {
                 Toast.makeText(getActivity(),"Mensaje desde Fragment",Toast.LENGTH_LONG).show();
 
                 //Enviar a la Activity
+                //((FragmentCommunicationActivity)getActivity()).otroMetodo();
                 /*if(mListener!=null){
-                    mListener.actionFragment("Mensaje desde Fragment a Activity");
+                    //mListener.actionFragment("Mensaje desde Fragment a Activity");
+                    mListener.actionActivityCambiarColor();
                 }*/
             }
         });

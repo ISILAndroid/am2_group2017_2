@@ -18,6 +18,7 @@ implements BlankFragmentListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fragment_basic);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         fragmentManager= getSupportFragmentManager();
         blankFragment= (BlankFragment) fragmentManager.findFragmentById(R.id.blankFragment);
 
@@ -30,5 +31,16 @@ implements BlankFragmentListener{
     @Override
     public void actionFragment(Object object) {
        //TODO REALIZAR ACCION
+    }
+
+    @Override
+    public void actionActivityCambiarColor() {
+
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

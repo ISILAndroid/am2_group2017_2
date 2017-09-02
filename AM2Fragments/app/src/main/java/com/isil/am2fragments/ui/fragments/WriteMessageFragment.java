@@ -107,10 +107,11 @@ public class WriteMessageFragment extends Fragment {
             public void onClick(View v) {
                 message= eteMessage.getText().toString();
                 Log.v(TAG, "1 message " + message);
-
                 if(mListener!=null)
                 {
                     mListener.recibiryEnviardesdeFragment(message);
+
+                    //( (MainMessageActivity)(getActivity())).getTwoFragment().mostrarMensaje();
                 }
             }
         });

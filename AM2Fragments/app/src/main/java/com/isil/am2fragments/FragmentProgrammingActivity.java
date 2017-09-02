@@ -1,9 +1,9 @@
 package com.isil.am2fragments;
 
+import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.widget.FrameLayout;
 
 import com.isil.am2fragments.ui.fragments.BlankFragment;
@@ -19,6 +19,7 @@ public class FragmentProgrammingActivity extends AppCompatActivity implements Bl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fragment_programming);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         frameLayoutContainer= (FrameLayout) findViewById(R.id.frameLayoutContainer);
         fragmentManager= getSupportFragmentManager();
 
@@ -30,10 +31,23 @@ public class FragmentProgrammingActivity extends AppCompatActivity implements Bl
 
     }
 
+    @Override
+    public void actionActivityCambiarColor() {
+
+    }
+
     private void addFragment(){
-        BlankFragment blankFragment= new BlankFragment();
+        BlankFragment blankFragment=new BlankFragment();
         FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.frameLayoutContainer,blankFragment,"BlankFragment");
         fragmentTransaction.commit();
+
+        //fragmentManager.findFragmentByTag()
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

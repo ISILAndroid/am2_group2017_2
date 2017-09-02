@@ -19,4 +19,9 @@ public class MyActivity extends AppCompatActivity
     public void actionFragment(Object object) {
 
     }
+
+    @Override
+    public void actionActivityCambiarColor() {
+
+    }
 }

@@ -31,6 +31,7 @@ public class MainMessageActivity extends AppCompatActivity implements MessageLis
     }
 
     private void app() {
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         fragmentManager= getSupportFragmentManager();
         oneFragment= (WriteMessageFragment) fragmentManager.findFragmentById(R.id.fragmentWriteMessage);
         twoFragment= (ShowMessageFragment) fragmentManager.findFragmentById(R.id.fragmentShowMessage);
@@ -46,5 +47,15 @@ public class MainMessageActivity extends AppCompatActivity implements MessageLis
     {
         Log.v(TAG, "2 recibiryEnviarMensaje " + message);
         twoFragment.mostrarMensaje(message);
+    }
+
+    public ShowMessageFragment getTwoFragment(){
+        return twoFragment;
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

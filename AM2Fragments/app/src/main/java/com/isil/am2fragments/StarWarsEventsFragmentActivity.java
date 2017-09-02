@@ -31,6 +31,8 @@ public class StarWarsEventsFragmentActivity extends AppCompatActivity implements
     }
 
     private void app() {
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         fragmentManager= getSupportFragmentManager();
         eventFragment= (EventFragment) fragmentManager.findFragmentById(R.id.fragmentEvents);
         eventDetailsFragment= (EventDetailsFragment) fragmentManager.findFragmentById(R.id.fragmentDetails);
@@ -44,9 +46,10 @@ public class StarWarsEventsFragmentActivity extends AppCompatActivity implements
 
         StarWarsEvent starWarsEvent= (StarWarsEvent)(object);
         if(eventDetailsFragment!=null){
-            startEventDetail(starWarsEvent);
-        }else{
             sendDataToEventDetail(starWarsEvent);
+
+        }else{
+            startEventDetail(starWarsEvent);
         }
     }
 
@@ -58,5 +61,11 @@ public class StarWarsEventsFragmentActivity extends AppCompatActivity implements
 
     private void sendDataToEventDetail(StarWarsEvent starWarsEvent){
         eventDetailsFragment.showEventInfo(starWarsEvent);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }
