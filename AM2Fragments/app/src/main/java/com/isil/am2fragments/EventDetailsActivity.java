@@ -8,6 +8,9 @@ import android.widget.TextView;
 import com.isil.am2fragments.model.StarWarsEvent;
 import com.squareup.picasso.Picasso;
 
+/**
+ * Esta Actividad muestra el detalle de un evento
+ */
 public class EventDetailsActivity extends AppCompatActivity {
 
     private ImageView imageViewEvent;

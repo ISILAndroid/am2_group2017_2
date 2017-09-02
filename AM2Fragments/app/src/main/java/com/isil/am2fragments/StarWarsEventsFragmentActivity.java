@@ -10,7 +10,14 @@ import com.isil.am2fragments.ui.fragments.EventDetailsFragment;
 import com.isil.am2fragments.ui.fragments.EventFragment;
 import com.isil.am2fragments.ui.fragments.MyFragmentListener;
 
-public class MainFragmentActivity extends AppCompatActivity implements MyFragmentListener {
+/**
+ * Este ejemplo realiza lo mismo que StarWarsEventsActivity
+ * pero esta hecho con fragments y una actividad como contenedor.
+ * Tambien valida si estamos en un smartphone o un table , verificando
+ * si que exista los 2 fragment o solo 1 , en el caso que exista un solo
+ * fragment usa actividades .
+ */
+public class StarWarsEventsFragmentActivity extends AppCompatActivity implements MyFragmentListener {
 
     private FragmentManager fragmentManager;
     private EventFragment eventFragment;
@@ -19,7 +26,7 @@ public class MainFragmentActivity extends AppCompatActivity implements MyFragmen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_fragment);
+        setContentView(R.layout.activity_star_wars_events_fragment);
         app();
     }
 

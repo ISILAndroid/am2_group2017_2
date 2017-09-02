@@ -11,34 +11,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".StarWarsEventsActivity">
+        </activity>
+        <activity android:name=".EventDetailsActivity">
+        </activity>
+        <activity android:name=".StarWarsEventsFragmentActivity">
+        </activity>
+        <activity
+            android:name=".StarWarsEventsTabletActivity"
+            android:screenOrientation="landscape">
+
+        </activity>
+        <activity android:name=".EventDetailFragmentActivity" />
+        <activity
+            android:name=".MainMessageActivity"
+            android:screenOrientation="landscape">
+        </activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".EventDetailsActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".MainFragmentActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".MainTabletActivity"
-            android:screenOrientation="landscape">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".EventDetailFragmentActivity" />
-        <activity android:name=".MainMessageActivity"
-            android:screenOrientation="landscape">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter></activity>
+        <activity android:name=".FragmentBasicActivity" />
+        <activity android:name=".FragmentProgrammingActivity" />
+        <activity android:name=".FragmentCommunicationActivity"></activity>
     </application>
 
 </manifest>

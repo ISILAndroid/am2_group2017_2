@@ -1,67 +1,54 @@
 package com.isil.am2fragments;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.os.Bundle;
 import android.view.View;
 
-import com.isil.am2fragments.data.StarWarsEventData;
-import com.isil.am2fragments.model.StarWarsEvent;
-import com.isil.am2fragments.ui.adapter.StarWarsEventAdapter;
-import com.isil.am2fragments.ui.events.ClickListener;
-import com.isil.am2fragments.ui.events.RecyclerTouchListener;
-
-import java.util.List;
-
-public class MainActivity extends AppCompatActivity {
-
-    private RecyclerView recyclerViewEvents;
-    private List<StarWarsEvent> events;
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ui();
-        loadData();
+        findViewById(R.id.textView1).setOnClickListener(this);
+        findViewById(R.id.textView2).setOnClickListener(this);
+        findViewById(R.id.textView3).setOnClickListener(this);
+        findViewById(R.id.textView4).setOnClickListener(this);
+        findViewById(R.id.textView5).setOnClickListener(this);
+        findViewById(R.id.textView6).setOnClickListener(this);
+        findViewById(R.id.textView7).setOnClickListener(this);
     }
 
-    private void loadData() {
-        events= new StarWarsEventData().generate();
-        renderEvents(events);
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.textView1:
+                    goToActivity(FragmentBasicActivity.class);
+                break;
+            case R.id.textView2:
+                    goToActivity(FragmentProgrammingActivity.class);
+                break;
+            case R.id.textView3:
+                    goToActivity(FragmentCommunicationActivity.class);
+                break;
+            case R.id.textView4:
+                    goToActivity(MainMessageActivity.class);
+                break;
+            case R.id.textView5:
+                    goToActivity(StarWarsEventsActivity.class);
+                break;
+            case R.id.textView6:
+                    goToActivity(StarWarsEventsFragmentActivity.class);
+                break;
+            case R.id.textView7:
+                    goToActivity(StarWarsEventsTabletActivity.class);
+                break;
+        }
     }
 
-    private void renderEvents(List<StarWarsEvent> events){
-        this.events= events;
-        recyclerViewEvents.setAdapter(new StarWarsEventAdapter(this,this.events));
-
-    }
-    private void ui() {
-        recyclerViewEvents= (RecyclerView)findViewById(R.id.recyclerViewEvents);
-        recyclerViewEvents.setLayoutManager(new LinearLayoutManager(this));
-
-        //events
-        recyclerViewEvents.addOnItemTouchListener(new RecyclerTouchListener(this, recyclerViewEvents, new ClickListener() {
-            @Override
-            public void onClick(View view, int position) {
-                if(events!=null){
-                    StarWarsEvent starWarsEvent= events.get(position);
-                    gotoDetails(starWarsEvent);
-                }
-            }
-
-            @Override
-            public void onLongClick(View view, int position) {
-
-            }
-        }));
-    }
-
-    private void gotoDetails(StarWarsEvent starWarsEvent) {
-        Intent intent= new Intent(this,EventDetailsActivity.class);
-        intent.putExtra("EVENT",starWarsEvent);
+    private void goToActivity(Class activity){
+        Intent intent= new Intent(this,activity);
         startActivity(intent);
     }
 }

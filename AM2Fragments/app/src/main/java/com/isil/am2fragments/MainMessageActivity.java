@@ -9,6 +9,12 @@ import com.isil.am2fragments.ui.fragments.MessageListener;
 import com.isil.am2fragments.ui.fragments.ShowMessageFragment;
 import com.isil.am2fragments.ui.fragments.WriteMessageFragment;
 
+/**
+ * Este ejemplo muestra como comunicar los fragments
+ * - Comunicar un fragment con la actividad que lo contiene
+ * - Comunicar la actividad a un fragment
+ * - Comunicar fragments utilizando la actividad que los contiene.
+ */
 public class MainMessageActivity extends AppCompatActivity implements MessageListener{
 
     private final String TAG= "CONSOLE";

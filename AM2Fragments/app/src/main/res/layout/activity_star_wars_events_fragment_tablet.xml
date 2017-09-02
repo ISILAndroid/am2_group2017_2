@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     android:weightSum="1"
-    tools:context="com.isil.am2fragments.MainTabletActivity">
+    tools:context="com.isil.am2fragments.StarWarsEventsTabletActivity">
     <fragment
         android:id="@+id/fragmentEvents"
         android:name="com.isil.am2fragments.ui.fragments.EventFragment"

@@ -10,7 +10,10 @@ import com.isil.am2fragments.ui.fragments.EventDetailsFragment;
 import com.isil.am2fragments.ui.fragments.EventFragment;
 import com.isil.am2fragments.ui.fragments.MyFragmentListener;
 
-public class MainTabletActivity extends AppCompatActivity implements MyFragmentListener {
+/**
+ * Este ejemplo esta diseñado solo con Fragments y  que funcione para tablets.
+ */
+public class StarWarsEventsTabletActivity extends AppCompatActivity implements MyFragmentListener {
 
     private FragmentManager fragmentManager;
     private EventFragment eventFragment;
@@ -19,7 +22,7 @@ public class MainTabletActivity extends AppCompatActivity implements MyFragmentL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_tablet);
+        setContentView(R.layout.activity_star_wars_events_fragment_tablet);
         app();
     }
 

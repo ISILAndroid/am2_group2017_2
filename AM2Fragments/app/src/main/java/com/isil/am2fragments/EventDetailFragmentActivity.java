@@ -5,6 +5,10 @@ import android.os.Bundle;
 
 import com.isil.am2fragments.ui.fragments.MyFragmentListener;
 
+/**
+ * Esta Actividad muestra el detalle de un evento utilizando Fragment
+ */
+
 public class EventDetailFragmentActivity extends AppCompatActivity implements MyFragmentListener {
 
     @Override

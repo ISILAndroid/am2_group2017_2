@@ -70,14 +70,24 @@ El proyecto tiene la siguiente estructura
 
 En este proyecto contamos con varias actividades
 
-- MainMessageActivity , este ejemplo nos muestra como crear un fragment, el uso de interfaces y como comunicar dos fragments , pasando información de una fragment al otro.
+- MainActivity , esta es la actividad principal y nos va a llevar a cada uno de los ejemplos de la clase.
 
-- MainActivity & EventDetailsActivity , en este ejemplo tenemos un listado de eventos y una pantalla de detalle. Esta realizado solo con Activities.
+- FragmentBasicActivity , en esta actividad veremos los conceptos básicos sobre Fragments. Tambien agregaremos un fragment a un actividad mediante XML.
 
-- MainFragmentActivity & EventDetailsActivity , este ejemplos es similar al anterior pero hemos usado fragments
+- FragmentProgrammingActivity, en este ejemplo veremos como crear un Fragment por programación.
 
-- MainTabletActivity , en este ejemplo solo usamos fragments para mostrar un listado de eventos y una pantalla de detalle.
+- FragmentCommunicationActivity, este ejemplo nos muestra como comunicar una Actividad con un Fragment y viceversa. El uso de interfaces como canal de comunicación.
 
+- StarWarsEventsActivity , este ejemplo esta hecho solo con actividades y muestra un listado de eventos , cuando seleccionas un eventos te manda a otra pantalla con el detalle del evento.
+
+- StarWarsEventsFragmentActivity , este ejemplo realiza lo mismo que StarWarsEventsActivity pero esta hecho con fragments y una actividad como contenedor. Tambien valida si estamos en un smartphone o un table , verificando si que exista los 2 fragment o solo 1 , en el caso que exista un solo fragment usa actividades .
+
+- StarWarsEventsTabletActivity , Este ejemplo esta diseñado solo con Fragments y  que funcione para tablets.
+
+- MainMessageActivity, este ejemplo muestra como comunicar los fragments
+  - Comunicar un fragment con la actividad que lo contiene
+  - Comunicar la actividad a un fragment
+  - Comunicar fragments utilizando la actividad que los contiene.
 
 ### [4] Ejecutar nuestros ejemplos
 
@@ -85,23 +95,41 @@ En este proyecto contamos con varias actividades
   Run / Run App
 ```
 
-- MainMessageActivity (appMessage)
+- MainMessageActivity
 
 <img src="./images/screenshotmessage.png" height="480">
 
-- MainActivity (app)
+- StarWarsEventsActivity
 
 <img src="./images/screenshot1.png" height="480"> <img src="./images/screenshot2.png" height="480">
 
-- MainFragmentActivity (appFragment)
+- StarWarsEventsFragmentActivity
 
 <img src="./images/screenshot1.png" height="480"> <img src="./images/screenshot2.png" height="480">
 
-- MainTabletActivity (appTablet)
+- StarWarsEventsTabletActivity
 
 <img src="./images/screenshottablet.png" height="480">
 
-### [5] Aprender más
+### [6] Explorando los Fragments
+
+- Fragments y Actividades
+
+<img src="./images/fragments_basic.jpg" height="480">
+
+- Comunicación entre Actividades y Fragments
+
+<img src="./images/fragments-communication-01.jpg" height="480">
+
+- Comunicación entre Fragments y Actividades
+
+<img src="./images/fragments-communication-02.jpg" height="480">
+
+- Comunicación entre Fragments
+
+<img src="./images/Fragments-communication-3.jpg" height="480">
+
+### [7] Aprender más
 
 -  Creando un fragment https://developer.android.com/training/basics/fragments/creating.html
 
