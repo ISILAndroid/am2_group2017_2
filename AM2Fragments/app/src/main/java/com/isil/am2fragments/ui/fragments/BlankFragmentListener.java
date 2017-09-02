@@ -7,4 +7,5 @@ package com.isil.am2fragments.ui.fragments;
 public interface BlankFragmentListener {
 
     void actionFragment(Object object);
+    //void actionActivityCambiarColor();
 }
