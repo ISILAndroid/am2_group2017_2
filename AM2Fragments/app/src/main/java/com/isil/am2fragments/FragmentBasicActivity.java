@@ -19,9 +19,11 @@ implements BlankFragmentListener{
         setContentView(R.layout.activity_fragment_basic);
 
         fragmentManager= getSupportFragmentManager();
-        blankFragment= (BlankFragment)fragmentManager.findFragmentById(R.id.blankFragment);
+        blankFragment= (BlankFragment) fragmentManager.findFragmentById(R.id.blankFragment);
 
-        blankFragment.ejecutarAccionDesdeFragment("Hola Fragment");
+
+        //blankFragment.ejecutarAccionDesdeFragment("Hola Fragment");
+        blankFragment.cambiarColorFondo();
     }
 
     @Override
