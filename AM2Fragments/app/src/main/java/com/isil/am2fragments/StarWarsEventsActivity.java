@@ -68,6 +68,9 @@ public class StarWarsEventsActivity extends AppCompatActivity {
     private void gotoDetails(StarWarsEvent starWarsEvent) {
         Intent intent= new Intent(this,EventDetailsActivity.class);
         intent.putExtra("EVENT",starWarsEvent);
+        //intent.putExtra("TITLE",starWarsEvent.getTitle());
+        //intent.putExtra("DESC",starWarsEvent.getDescription());
+        //intent.putExtra("PHOTO",starWarsEvent.getPhoto());
         startActivity(intent);
     }
 

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import com.isil.am2fragments.model.StarWarsEvent;
 import com.isil.am2fragments.ui.fragments.EventDetailsFragment;
@@ -39,6 +40,9 @@ public class StarWarsEventsTabletActivity extends AppCompatActivity implements M
 
     @Override
     public void goToEventDetail(Object object) {
+
+        Log.d("CONSOLE","Paso 2 StarWarsEventsTabletActivity "+object);
+
         StarWarsEvent starWarsEvent= (StarWarsEvent)(object);
         if(eventDetailsFragment!=null){
             sendDataToEventDetail(starWarsEvent);

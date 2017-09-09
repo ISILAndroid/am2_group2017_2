@@ -10,5 +10,6 @@ public interface MyFragmentListener {
 
     void goToEventDetail(Object object);
 
+    //void goToEventDetail(StarWarsEvent starWarsEvent);
 
 }
