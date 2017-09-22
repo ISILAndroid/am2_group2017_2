@@ -134,3 +134,5 @@ En este proyecto contamos con varias actividades
 -  Creando un fragment https://developer.android.com/training/basics/fragments/creating.html
 
 - Construyendo UI dinámicas con fragments https://developer.android.com/training/basics/fragments/index.html
+
+*** Semana 3 Viernes 01 de Septiembre ***

@@ -9,6 +9,7 @@ import android.view.View;
 
 import com.isil.am2fragments.data.StarWarsEventData;
 import com.isil.am2fragments.model.StarWarsEvent;
+import com.isil.am2fragments.model.User;
 import com.isil.am2fragments.ui.adapter.StarWarsEventAdapter;
 import com.isil.am2fragments.ui.events.ClickListener;
 import com.isil.am2fragments.ui.events.RecyclerTouchListener;
@@ -68,6 +69,8 @@ public class StarWarsEventsActivity extends AppCompatActivity {
     private void gotoDetails(StarWarsEvent starWarsEvent) {
         Intent intent= new Intent(this,EventDetailsActivity.class);
         intent.putExtra("EVENT",starWarsEvent);
+        intent.putExtra("USER",new User());
+        //intent.putExtra("PRODUCT",new Product());
         //intent.putExtra("TITLE",starWarsEvent.getTitle());
         //intent.putExtra("DESC",starWarsEvent.getDescription());
         //intent.putExtra("PHOTO",starWarsEvent.getPhoto());
