@@ -26,6 +26,14 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
                 Intent intent;
+                /*SharedPreferences sharedPreferences=getSharedPreferences("DEMO", Context.MODE_PRIVATE);
+                String username =sharedPreferences.getString("USERNAME",null);
+                String password =sharedPreferences.getString("PASSWORD",null);
+                if(username==null || password==null){
+                    //go To Login
+                }else{
+                    //go To Dashboard
+                }*/
                 boolean session= PreferencesHelper.isSignedIn(SplashActivity.this);
                 if(session)
                 {

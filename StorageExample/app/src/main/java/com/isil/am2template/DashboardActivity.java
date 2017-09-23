@@ -126,6 +126,9 @@ public class DashboardActivity extends AppCompatActivity implements OnNavListene
     }
 
     private void logout() {
+        //SharedPreferences sharedPreferences= getSharedPreferences("DEMO", Context.MODE_PRIVATE);
+        //sharedPreferences.edit().clear();
+
         PreferencesHelper.signOut(this);
         startActivity(new Intent(this, LoginActivity.class));
         finish();

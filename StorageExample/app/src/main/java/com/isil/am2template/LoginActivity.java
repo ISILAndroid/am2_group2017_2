@@ -3,8 +3,6 @@ package com.isil.am2template;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -64,10 +62,10 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void savePreferences() {
-
         PreferencesHelper.saveSession(this,username,password);
     }
 
+    //https://www.google.com/search?q=if+kaduken&client=firefox-b-ab&dcr=0&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjB2NHImrrWAhXMQSYKHW_RA_wQ_AUICigB&biw=1200&bih=604#imgrc=a9oiru77r4sJBM:
     private boolean validateForm() {
         username= eteUsername.getText().toString();
         password= etePassword.getText().toString();
@@ -85,15 +83,4 @@ public class LoginActivity extends AppCompatActivity {
         return true;
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        return false;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        return false;
-    }
 }
