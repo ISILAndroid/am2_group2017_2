@@ -5,7 +5,11 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+
+import com.isil.am2template.storage.PreferencesHelper;
 
 public class DemoActivity extends AppCompatActivity {
 
@@ -13,24 +17,69 @@ public class DemoActivity extends AppCompatActivity {
     private SharedPreferences.Editor sharedPreferencesEditor;
 
     private TextView textView;
+    private Button buttonClear, buttonSave;
+
+    private String mOperaciones="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_demo);
-
         app();
+    }
+    private void renderSP(){
+        mOperaciones="";
+        retrieveStringValue("USERNAME");
+        retrieveStringValue("PASSWORD");
+
+        textView.setText(mOperaciones);
+    }
+
+    private void saveSP(){
+        saveStringKey("USERNAME","EDU");
+        saveStringKey("PASSWORD","123456");
+    }
+
+    private void clearSP(){
+        clear();
     }
 
     private void ui(){
         textView= (TextView) findViewById(R.id.textView);
+        buttonClear= (Button) findViewById(R.id.buttonClear);
+        buttonSave= (Button) findViewById(R.id.buttonSave);
         //textView.setText("TEXTO...");
+        textView.setText("");
+
+        //eventos
+        buttonSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //guardar
+                saveSP();
+                renderSP();
+            }
+        });
+
+        buttonClear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //clear
+                clearSP();
+                renderSP();
+            }
+        });
     }
 
     private void app() {
         ui();
         setUpSharedPreferences();
 
+        PreferencesHelper.saveSession(this,"edu","123456");
+        boolean session= PreferencesHelper.isSignedIn(this);
+        String username= PreferencesHelper.getUserSession(this);
+
+        log("session "+session+ " username "+username);
         //save
         //saveStringKey("USERNAME","edu");
         //saveStringKey("PASSWORD","123456");
@@ -41,19 +90,29 @@ public class DemoActivity extends AppCompatActivity {
 
         //clear
         //clearKey("USERNAME");
+        //clearKey("PASSWORD");
         //clear();
+        //retrieveStringValue("PASSWORD");
+        //retrieveStringValue("USERNAME");
+
+        //textView.setText(mOperaciones);
     }
 
     private void setUpSharedPreferences(){
+
+        //getSharedPreferences("com.isil.am2template.storageexample",Context.MODE_PRIVATE);
+
         sharedPreferences=getSharedPreferences("DEMO", Context.MODE_PRIVATE);
         //sharedPreferences=getSharedPreferences("DEMO", Context.MODE_APPEND);
         sharedPreferencesEditor= sharedPreferences.edit();
     }
 
     private void retrieveStringValue(String key){
-        String value= sharedPreferences.getString(key,null);
+        String value= sharedPreferences.getString(key,"Valor eliminado");
 
         log(String.format("retrieve key : %s , value : %s",key,value));
+
+        mOperaciones+="\nRecibir  key "+key+ " value "+value;
     }
 
     private void retrieveIntValue(String key){
@@ -69,8 +128,10 @@ public class DemoActivity extends AppCompatActivity {
     private void saveStringKey(String key, String value){
         sharedPreferencesEditor.putString(key, value);
         sharedPreferencesEditor.apply();
+        //sharedPreferencesEditor.commit();
 
-        log(String.format("key : %s , value : %s",key,value));
+        log(String.format("saved key : %s , value : %s",key,value));
+        mOperaciones+= "\nGuardar key "+key+" value "+value;
     }
 
     private void saveIntKey(String key, int value){
@@ -91,12 +152,13 @@ public class DemoActivity extends AppCompatActivity {
         sharedPreferencesEditor.apply();
     }
 
-
     private void clear(){
         //sharedPreferencesEditor.remove(key);
         //sharedPreferencesEditor.remove(key);
         sharedPreferencesEditor.clear();
         sharedPreferencesEditor.apply();
+
+        log("Clear...");
     }
     private void log(String message){
         if(message==null)return;

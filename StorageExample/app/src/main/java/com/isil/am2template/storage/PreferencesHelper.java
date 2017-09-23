@@ -6,9 +6,10 @@ import android.content.SharedPreferences;
 
 public class PreferencesHelper {
 
-    private static final String MYNOTES_PREFERENCES = "mynotesPreferences";
+    private static final String MYNOTES_PREFERENCES = "com.isil.am2template.storageexample";
     private static final String PREFERENCES_USERNAME = MYNOTES_PREFERENCES + ".username";
     private static final String PREFERENCES_PASSWORD = MYNOTES_PREFERENCES + ".password";
+    private static final String PRODUCT_ID=MYNOTES_PREFERENCES+".productId";
 
     private PreferencesHelper() {
         //no instance
