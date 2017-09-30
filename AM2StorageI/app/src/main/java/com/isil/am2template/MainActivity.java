@@ -12,7 +12,9 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     private final String PREFERENCES= "com.isil.am2template";
-    private final String PREFERENCES_TEXT= "com.isil.am2template.session.text";
+    //private final String PREFERENCES_TEXT= "com.isil.am2template.session.text";
+    private final String PREFERENCES_TEXT= PREFERENCES+".session.text";
+    private final String PREFERENCES_IMAGE= PREFERENCES+".session.image";
 
     private TextView textView;
     private Button buttonSave,buttonClear;
@@ -20,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private Snackbar snackbar;
 
     private SharedPreferences sharedPreferences;
+    private String userMessage="";
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,28 +32,34 @@ public class MainActivity extends AppCompatActivity {
         app();
     }
 
-
     private void  saveValue(){
+        userMessage="Hello Isil";
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(PREFERENCES_TEXT, "Hello Android");
+        editor.putString(PREFERENCES_TEXT,userMessage );
         editor.apply();
     }
 
-
     private void  clearSession(){
+        userMessage="Sp empty";
         SharedPreferences.Editor editor = sharedPreferences.edit();
         /*editor.remove(PREFERENCES_TEXT);
         editor.clear();
         editor.apply();*/
+
+        editor.clear();
+        editor.apply();
     }
     private void app() {
         sharedPreferences= getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE);
+        /*SharedPreferences sharedPreferences1= getSharedPreferences("OTROSHAREDPREFERENCIA",
+                Context.MODE_PRIVATE);*/
 
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 saveValue();
                 showMessage("Save successful!");
+                textView.setText(userMessage);
             }
         });
 
@@ -59,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 clearSession();
                 showMessage("Cleaned session !");
+                textView.setText(userMessage);
 
             }
         });
@@ -67,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void renderText() {
-
         String text= "SP empty";
         if(sharedPreferences.contains(PREFERENCES_TEXT)){
             text= sharedPreferences.getString(PREFERENCES_TEXT,"SP empty");

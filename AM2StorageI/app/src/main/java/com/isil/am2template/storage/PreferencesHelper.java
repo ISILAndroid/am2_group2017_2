@@ -9,9 +9,20 @@ public class PreferencesHelper {
     private static final String MYNOTES_PREFERENCES = "mynotesPreferences";
     private static final String PREFERENCES_USERNAME = MYNOTES_PREFERENCES + ".username";
     private static final String PREFERENCES_PASSWORD = MYNOTES_PREFERENCES + ".password";
+    private static final String PREFERENCES_TEXT=MYNOTES_PREFERENCES+"session.text";
 
     private PreferencesHelper() {
         //no instance
+    }
+
+    public static void clearAll(Context context){
+        SharedPreferences.Editor editor = getEditor(context);
+        editor.clear();
+        editor.apply();
+    }
+
+    public static void saveValue(String value){
+
     }
 
     public static void signOut(Context context) {
@@ -41,6 +52,11 @@ public class PreferencesHelper {
         final SharedPreferences preferences = getSharedPreferences(context);
         return preferences.contains(PREFERENCES_USERNAME) &&
                 preferences.contains(PREFERENCES_PASSWORD);
+    }
+
+    public static boolean isTextValue(Context context){
+        final SharedPreferences preferences = getSharedPreferences(context);
+        return preferences.contains(PREFERENCES_TEXT);
     }
 
     private static SharedPreferences.Editor getEditor(Context context) {
