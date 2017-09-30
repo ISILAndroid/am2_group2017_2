@@ -8,7 +8,6 @@ Unidades de aprendizaje
 3. UA 3 ( Semana 12)
 4. UA 4 ( Semana ..)
 
-
 Link de Cronograma de actividades
 
 https://github.com/ISILAndroid/am2_group2017_2/projects/1

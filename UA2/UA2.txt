@@ -1,0 +1,15 @@
+ISIL - 2017-2
+
+Curso de Aplicaciones Móviles
+
+Unidad de Aprendizaje 2 
+
+Realizar la siguiente funcionalidades usando fragments y preferencias compartidas: 
+
+1. Validar la sesión del usuario.
+2. Cerrar la sesión del usuario.
+3. En el formulario de perfil, guardar en preferencias los campos ingresados.
+4. Si el usuario no cierra sesión e ingresó información en perfil, se debe mostrar la información.
+5. Si existe una sesión , no debe pasar por el logIn nuevamente.
+
+Happy coding !

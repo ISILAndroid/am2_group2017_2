@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.isil.am2template.ProfileActivity"
+    android:id="@+id/constraintLayoutContainer">
+    <!-- LinearLayout
+       Es un contenedor que permite alinear
+       los elementos de manera horizontal o vertical,
+       permite tambien usar pesos para distribuir
+       los elementos en proporción a la pantalla.
+       Con la propiedad orientación podemos seleccionar la orientación
+       del contenedor :
+
+            android:orientation="vertical"
+    -->
+    <!-- Fragments
+       Para poder insertar un fragment mediante XML
+       debemos usar la etiqueta <fragment/> y pasa asociarlo
+       con la propiedad "android.name" el path de donde se encuentra la clase
+
+           android:name="com.isil.am2template.fragments.ProfileFragment"
+    -->
+
+    <!-- Pesos
+        En el contenedor linearlayout , dependiendo de la orientación
+        puedo trabajar con pesos de sus elementos. Ejemplo :
+
+          <fragment
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.8"
+
+       Esto significa que la altura no importa (se le asigna 0dp)
+       y quien controla su altura es "layout_weigth". En este caso
+       le decimos que ocupe el 80% de la pantalla
+    -->
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginRight="0dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="0dp"
+        android:orientation="vertical"
+        android:weightSum="1">
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.85"
+            tools:layout="@layout/fragment_profile"
+            android:name="com.isil.am2template.fragments.ProfileFragment"
+            android:id="@+id/fragmentProfile"/>
+
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.15"
+            tools:layout="@layout/fragment_color"
+            android:name="com.isil.am2template.fragments.ColorFragment"
+            android:id="@+id/fragmentColor"/>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
