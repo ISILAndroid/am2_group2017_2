@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/menuPin"
+            android:checked="false"
+            android:icon="@drawable/ic_stars_black_18dp"
+            android:title="@string/nav_pin" />
+
+        <item
+            android:id="@+id/menuCard"
+            android:checked="false"
+            android:icon="@drawable/ic_credit_card_black_24dp"
+            android:title="@string/nav_cards" />
+
+        <item
+            android:id="@+id/menuTravel"
+            android:checked="false"
+            android:icon="@drawable/ic_local_taxi_black_18dp"
+            android:title="@string/nav_travel_history" />
+
+        <item
+            android:id="@+id/menuFavorite"
+            android:checked="false"
+            android:icon="@drawable/ic_favorite_black_24dp"
+            android:title="@string/nav_favorite" />
+
+        <item
+            android:id="@+id/menuNews"
+            android:checked="false"
+            android:icon="@drawable/ic_event_black_24dp"
+            android:title="@string/nav_news" />
+
+        <item
+            android:id="@+id/menuExit"
+            android:checked="false"
+            android:icon="@drawable/ic_exit_to_app_black_24dp"
+            android:title="@string/nav_exit" />
+
+
+    </group>
+</menu>
+
