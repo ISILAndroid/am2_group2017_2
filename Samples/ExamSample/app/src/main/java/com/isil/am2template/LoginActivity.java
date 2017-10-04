@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.isil.am2template.storage.PreferencesHelper;
+
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -17,8 +19,7 @@ public class LoginActivity extends AppCompatActivity {
     private String password;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
@@ -26,9 +27,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void init() {
-        eteUsername=(EditText)findViewById(R.id.eteUsername);
-        etePassword=(EditText)findViewById(R.id.etePassword);
-        btnLogin=(Button)findViewById(R.id.btnLogin);
+        eteUsername = (EditText) findViewById(R.id.eteUsername);
+        etePassword = (EditText) findViewById(R.id.etePassword);
+        btnLogin = (Button) findViewById(R.id.btnLogin);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,24 +41,26 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-
     private void gotoMain() {
-        Intent intent= new Intent(this,DashboardActivity.class);
+        saveSession();
+        Intent intent = new Intent(this, DashboardActivity.class);
         startActivity(intent);
         finish();
     }
 
-    private boolean validateForm() {
-        username= eteUsername.getText().toString();
-        password= etePassword.getText().toString();
+    private void saveSession() {
+        PreferencesHelper.saveSession(this, username, password);
+    }
 
-        if(username.isEmpty())
-        {
+    private boolean validateForm() {
+        username = eteUsername.getText().toString();
+        password = etePassword.getText().toString();
+
+        if (username.isEmpty()) {
             eteUsername.setError("Error campo username");
             return false;
         }
-        if(password.isEmpty())
-        {
+        if (password.isEmpty()) {
             etePassword.setError("Error campo password");
             return false;
         }

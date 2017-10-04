@@ -21,18 +21,10 @@ public class PlaceCrudOperations {
     public PlaceCrudOperations(SQLiteOpenHelper mHelper) {
         super();
         // TODO Auto-generated constructor stub
-        helper =(MyDatabase)mHelper;
+        helper = (MyDatabase) mHelper;
     }
 
-    /*
-       public static final String KEY_USER_EMAIL = "user_email";
-       public static final String KEY_PLACE_NAME = "place_name";
-       public static final String KEY_PLACE_ADDRESS = "place_address";
-       public static final String KEY_DISTANCE= "distance";
-       public static final String KEY_FAVORITE = "favorite";
-    */
-    public void addPlace(Place place)
-    {
+    public void addPlace(Place place) {
         SQLiteDatabase db = helper.getWritableDatabase(); //modo escritura
         ContentValues values = new ContentValues();
         values.put(MyDatabase.KEY_USER_EMAIL, place.getUserEmail());
@@ -45,24 +37,14 @@ public class PlaceCrudOperations {
         db.close();
     }
 
-    /*
-        public static final String KEY_USER_EMAIL = "user_email";
-        public static final String KEY_PLACE_NAME = "place_name";
-        public static final String KEY_PLACE_ADDRESS = "place_address";
-        public static final String KEY_DISTANCE= "distance";
-        public static final String KEY_FAVORITE = "favorite";
-     */
-    public List<Place> getAllFavoritePlaces()
-    {
-        List<Place> lst =new ArrayList<Place>();
-        String sql= "SELECT  * FROM " + MyDatabase.TABLE_FAVORITE;
+    public List<Place> getAllFavoritePlaces() {
+        List<Place> lst = new ArrayList<Place>();
+        String sql = "SELECT  * FROM " + MyDatabase.TABLE_FAVORITE;
         SQLiteDatabase db = helper.getReadableDatabase();
         Cursor cursor = db.rawQuery(sql, null);
-        if(cursor.moveToFirst())
-        {
-            do
-            {
-                Place place =new Place();
+        if (cursor.moveToFirst()) {
+            do {
+                Place place = new Place();
                 place.setId(Integer.parseInt(cursor.getString(0)));
                 place.setUserEmail(cursor.getString(1));
                 place.setName(cursor.getString(2));
@@ -71,14 +53,13 @@ public class PlaceCrudOperations {
                 place.setFavorite(Boolean.parseBoolean(cursor.getString(5)));
 
                 lst.add(place);
-            }while(cursor.moveToNext());
+            } while (cursor.moveToNext());
         }
         return lst;
     }
 
-    public int getPlaceCount()
-    {
-        String sql= "SELECT * FROM "+MyDatabase.TABLE_FAVORITE;
+    public int getPlaceCount() {
+        String sql = "SELECT * FROM " + MyDatabase.TABLE_FAVORITE;
         SQLiteDatabase db = helper.getReadableDatabase();
         Cursor cursor = db.rawQuery(sql, null);
         int count = cursor.getCount();

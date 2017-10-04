@@ -15,12 +15,13 @@ import android.view.View;
 import com.isil.am2template.fragments.FavoritePlaceFragment;
 import com.isil.am2template.fragments.MyPinFragment;
 import com.isil.am2template.listeners.OnNavListener;
+import com.isil.am2template.storage.PreferencesHelper;
 
 public class DashboardActivity extends AppCompatActivity implements OnNavListener {
 
-    private final int MENU_FAVORITE= 103;
-    private final int MENU_MY_PIN= 101;
-    private final int MENU_EXIT= 104;
+    private final int MENU_FAVORITE = 103;
+    private final int MENU_MY_PIN = 101;
+    private final int MENU_EXIT = 104;
 
     private Toolbar toolbar;
     private NavigationView navigationView;
@@ -114,8 +115,8 @@ public class DashboardActivity extends AppCompatActivity implements OnNavListene
 
         //calling sync state is necessay or else your hamburger icon wont show up
         actionBarDrawerToggle.syncState();
-        changeFragment(0);
-        navigationView.setCheckedItem(R.id.menuAndroid);
+        changeFragment(MENU_MY_PIN);
+        navigationView.setCheckedItem(R.id.menuPin);
 
     }
 
@@ -139,8 +140,12 @@ public class DashboardActivity extends AppCompatActivity implements OnNavListene
         }
     }
 
+    private void clearSession() {
+        PreferencesHelper.signOut(this);
+    }
+
     private void logout() {
-        //clear session
+        clearSession();
         startActivity(new Intent(this, LoginActivity.class));
         finish();
     }

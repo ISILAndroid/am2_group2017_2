@@ -1,5 +1,6 @@
 
 package com.isil.am2template.storage;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 
@@ -9,10 +10,9 @@ public class PreferencesHelper {
     private static final String MYNOTES_PREFERENCES = "com.isil.am2template.storageexample";
     private static final String PREFERENCES_USERNAME = MYNOTES_PREFERENCES + ".username";
     private static final String PREFERENCES_PASSWORD = MYNOTES_PREFERENCES + ".password";
-    private static final String PRODUCT_ID=MYNOTES_PREFERENCES+".productId";
+    private static final String PRODUCT_ID = MYNOTES_PREFERENCES + ".productId";
 
     private PreferencesHelper() {
-        //no instance
     }
 
     public static void signOut(Context context) {
@@ -22,18 +22,16 @@ public class PreferencesHelper {
         editor.apply();
     }
 
-    public static void saveSession(Context context, String username, String password)
-    {
+    public static void saveSession(Context context, String username, String password) {
         SharedPreferences.Editor editor = getEditor(context);
         editor.putString(PREFERENCES_USERNAME, username);
         editor.putString(PREFERENCES_PASSWORD, password);
         editor.apply();
     }
 
-    public static String getUserSession(Context context)
-    {
-        SharedPreferences sharedPreferences= getSharedPreferences(context);
-        String username= sharedPreferences.getString(PREFERENCES_USERNAME,null);
+    public static String getUserSession(Context context) {
+        SharedPreferences sharedPreferences = getSharedPreferences(context);
+        String username = sharedPreferences.getString(PREFERENCES_USERNAME, null);
 
         return username;
     }

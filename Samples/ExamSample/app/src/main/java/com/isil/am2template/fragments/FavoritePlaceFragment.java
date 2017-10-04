@@ -28,7 +28,7 @@ public class FavoritePlaceFragment extends Fragment {
 
     private OnNavListener mListener;
     private PlaceCrudOperations placeCrudOperations;
-    private List<Place> places=new ArrayList<>();
+    private List<Place> places = new ArrayList<>();
 
     private RecyclerView recyclerViewPlace;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -42,8 +42,8 @@ public class FavoritePlaceFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View viewContainer=  inflater.inflate(R.layout.fragment_favorite_place, container, false);
-        recyclerViewPlace=(RecyclerView) viewContainer.findViewById(R.id.recyclerViewPlace);
+        View viewContainer = inflater.inflate(R.layout.fragment_favorite_place, container, false);
+        recyclerViewPlace = (RecyclerView) viewContainer.findViewById(R.id.recyclerViewPlace);
         return viewContainer;
     }
 
@@ -52,8 +52,8 @@ public class FavoritePlaceFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         ui();
-        placeCrudOperations= new PlaceCrudOperations(new MyDatabase(getActivity()));
-        if(placeCrudOperations.getPlaceCount()<=0){
+        placeCrudOperations = new PlaceCrudOperations(new MyDatabase(getActivity()));
+        if (placeCrudOperations.getPlaceCount() <= 0) {
             populate();
         }
         loadFavoritePlaces();
@@ -66,20 +66,20 @@ public class FavoritePlaceFragment extends Fragment {
     }
 
     private void loadFavoritePlaces() {
-        places= placeCrudOperations.getAllFavoritePlaces();
-        PlaceAdapter placeAdapter= new PlaceAdapter(getActivity(),places);
+        places = placeCrudOperations.getAllFavoritePlaces();
+        PlaceAdapter placeAdapter = new PlaceAdapter(getActivity(), places);
         recyclerViewPlace.setAdapter(placeAdapter);
     }
 
-    private void populate(){
+    private void populate() {
         placeCrudOperations.addPlace(new Place("admin@gmail.com",
-                "Casa", "Las Artes 1040, San Borja",0.8));
+                "Casa", "Las Artes 1040, San Borja", 0.8));
         placeCrudOperations.addPlace(new Place("admin@gmail.com",
-                "Trabajo", "Avenida Carriquiry, San Isidro",1.2));
+                "Trabajo", "Avenida Carriquiry, San Isidro", 1.2));
         placeCrudOperations.addPlace(new Place("admin@gmail.com",
-                "Universidad", "Avenida Salaverry, 2255, San Isidro",1.8));
+                "Universidad", "Avenida Salaverry, 2255, San Isidro", 1.8));
         placeCrudOperations.addPlace(new Place("admin@gmail.com",
-                "Familia", "Calle Esmeralda, 276, Los Olivos",4.5));
+                "Familia", "Calle Esmeralda, 276, Los Olivos", 4.5));
     }
 
     @Override
