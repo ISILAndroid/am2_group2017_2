@@ -62,7 +62,7 @@ public class FavoritePlaceFragment extends Fragment {
         Log.d("CONSOLE", String.format("count %s countRaw %s countStatement %s countDbUtils %s",
                 count,countRaw,countStatement,countDbUtils) );
         //count 4 countRaw 4 countStatement 4 countDbUtils 4
-        
+
         if (placeCrudOperations.getPlaceCount() <= 0) {
             populate();
         }

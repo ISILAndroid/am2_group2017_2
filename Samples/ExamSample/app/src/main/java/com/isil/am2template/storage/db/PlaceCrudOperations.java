@@ -100,4 +100,15 @@ public class PlaceCrudOperations {
 
         return count;
     }
+
+    private void clearTable(String table){
+        String clearDBQuery = "DELETE FROM "+table;
+        SQLiteDatabase db = helper.getWritableDatabase(); //modo escritura
+        db.execSQL(clearDBQuery);
+        db.close();
+    }
+
+    public void clearDb(){
+        clearTable(MyDatabase.TABLE_FAVORITE);
+    }
 }

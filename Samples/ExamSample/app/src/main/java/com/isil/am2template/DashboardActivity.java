@@ -16,6 +16,8 @@ import com.isil.am2template.fragments.FavoritePlaceFragment;
 import com.isil.am2template.fragments.MyPinFragment;
 import com.isil.am2template.listeners.OnNavListener;
 import com.isil.am2template.storage.PreferencesHelper;
+import com.isil.am2template.storage.db.MyDatabase;
+import com.isil.am2template.storage.db.PlaceCrudOperations;
 
 public class DashboardActivity extends AppCompatActivity implements OnNavListener {
 
@@ -142,6 +144,7 @@ public class DashboardActivity extends AppCompatActivity implements OnNavListene
 
     private void clearSession() {
         PreferencesHelper.signOut(this);
+        new PlaceCrudOperations(new MyDatabase(this)).clearDb();
     }
 
     private void logout() {
