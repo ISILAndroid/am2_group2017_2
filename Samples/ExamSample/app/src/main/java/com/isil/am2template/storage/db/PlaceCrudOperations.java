@@ -2,8 +2,10 @@ package com.isil.am2template.storage.db;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteStatement;
 
 import com.isil.am2template.model.Place;
 
@@ -55,6 +57,7 @@ public class PlaceCrudOperations {
                 lst.add(place);
             } while (cursor.moveToNext());
         }
+        db.close();
         return lst;
     }
 
@@ -64,8 +67,37 @@ public class PlaceCrudOperations {
         Cursor cursor = db.rawQuery(sql, null);
         int count = cursor.getCount();
         cursor.close();
+        db.close();
+        return count;
+    }
+
+    public int getPlaceCountWithRaw(){
+        String sql= "select count(*) from "+MyDatabase.TABLE_FAVORITE;
+        SQLiteDatabase db = helper.getReadableDatabase();
+        Cursor cursor= db.rawQuery(sql, null);
+        cursor.moveToFirst();
+        int count= cursor.getInt(0);
+        cursor.close();
+        db.close();
+        return count;
+    }
+
+    public long getPlaceCountWithStatement(){
+        String sql= "select count(*) from "+MyDatabase.TABLE_FAVORITE;
+        SQLiteDatabase db = helper.getReadableDatabase();
+        SQLiteStatement s = db.compileStatement(sql);
+        long count = s.simpleQueryForLong();
+        db.close();
 
         return count;
+    }
 
+    public long getPlaceCountWithDbUtils(){
+        String sql= "select count(*) from "+MyDatabase.TABLE_FAVORITE;
+        SQLiteDatabase db = helper.getReadableDatabase();
+        int count = (int) DatabaseUtils.longForQuery(db, sql, null);
+        db.close();
+
+        return count;
     }
 }

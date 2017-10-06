@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,6 +54,15 @@ public class FavoritePlaceFragment extends Fragment {
 
         ui();
         placeCrudOperations = new PlaceCrudOperations(new MyDatabase(getActivity()));
+        int count = placeCrudOperations.getPlaceCount();
+        int countRaw = placeCrudOperations.getPlaceCountWithRaw();
+        long countStatement = placeCrudOperations.getPlaceCountWithStatement();
+        long countDbUtils = placeCrudOperations.getPlaceCountWithDbUtils();
+
+        Log.d("CONSOLE", String.format("count %s countRaw %s countStatement %s countDbUtils %s",
+                count,countRaw,countStatement,countDbUtils) );
+        //count 4 countRaw 4 countStatement 4 countDbUtils 4
+        
         if (placeCrudOperations.getPlaceCount() <= 0) {
             populate();
         }
