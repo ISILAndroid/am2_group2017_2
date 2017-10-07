@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorIsil">#019CDE</color>
+
+    <color name="greenLimaGas">#77B850</color>
+    <color name="blueLimaGas">#1E1EB4</color>
+    <color name="whiteLimaGas">#FFFFFF</color>
+    <color name="blackLimaGas">#000000</color>
+    <color name="grayLimaGas">#666666</color>
+
+
+</resources>
