@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteStatement;
 
 import com.isil.am2template.model.entity.NoteEntity;
 
@@ -89,7 +90,6 @@ public class CRUDOperations {
 	}
 	
 	//--------------------------------------------
-	
 	public int updateNote(NoteEntity noteEntity)
 	{
 		SQLiteDatabase db = helper.getWritableDatabase();
@@ -106,8 +106,8 @@ public class CRUDOperations {
 
 		return row;
 	}
+
 	//--------------------------------------------
-	
 	public int deleteNote(NoteEntity noteEntity)
 	{
 		 SQLiteDatabase db = helper.getWritableDatabase(); 
@@ -116,5 +116,28 @@ public class CRUDOperations {
 				 new String[]{String.valueOf(noteEntity.getId())});
 		 db.close();
 		return row;
+	}
+
+	public long getNoteCountWithStatement(){
+		String sql= "select count(*) from "+MyDatabase.TABLE_NOTES;
+		SQLiteDatabase db = helper.getReadableDatabase();
+		SQLiteStatement s = db.compileStatement(sql);
+		long count = s.simpleQueryForLong();
+		db.close();
+
+		return count;
+	}
+
+
+	private void clearTable(String table){
+		String clearDBQuery = "DELETE FROM "+table;
+		SQLiteDatabase db = helper.getWritableDatabase(); //modo escritura
+		db.execSQL(clearDBQuery);
+		db.close();
+	}
+
+	public void clearDb(){
+		clearTable(MyDatabase.TABLE_NOTES);
+		//clearTable(MyDatabase.TABLE_USER);
 	}
 }
