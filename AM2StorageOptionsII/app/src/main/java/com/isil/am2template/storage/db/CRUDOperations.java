@@ -50,6 +50,7 @@ public class CRUDOperations {
 
 		NoteEntity noteEntity= new NoteEntity(
 				nid, name, desc,path);
+		db.close();
 		return noteEntity;
 	}
 	
@@ -72,6 +73,7 @@ public class CRUDOperations {
 				lst.add(contact);
 			}while(cursor.moveToNext());
 		}
+		db.close();
 		return lst;
 	}
 	
@@ -80,9 +82,10 @@ public class CRUDOperations {
 		String sql= "SELECT * FROM "+MyDatabase.TABLE_NOTES;
 		SQLiteDatabase db = helper.getReadableDatabase();
 		Cursor cursor = db.rawQuery(sql, null);
+		int count=cursor.getCount();
 		cursor.close();
-		
-		return cursor.getCount();
+		db.close();
+		return count;
 	}
 	
 	//--------------------------------------------

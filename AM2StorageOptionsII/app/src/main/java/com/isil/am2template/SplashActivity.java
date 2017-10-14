@@ -26,6 +26,8 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
                 Intent intent;
+                Bundle bundle= new Bundle();
+                bundle.putString("KEY","VALOR");
                 boolean session= PreferencesHelper.isSignedIn(SplashActivity.this);
                 if(session)
                 {
@@ -33,6 +35,7 @@ public class SplashActivity extends AppCompatActivity {
                 }else {
                     intent = new Intent(SplashActivity.this, LoginActivity.class);
                 }
+                intent.putExtras(bundle);
                 startActivity(intent);
                 finish();
             }

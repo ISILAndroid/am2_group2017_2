@@ -94,20 +94,57 @@ public class AddNoteFragment extends Fragment {
         btnAddNote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addNote();
+                if(validateForm()){
+                    addNote();
+                    closeActivity();
+                }
             }
         });
     }
 
-    private void addNote() {
+    private boolean validateForm(){
+        //ui
+        clearForm();
         name= eteName.getText().toString().trim();
         desc= eteDesc.getText().toString().trim();
         note= eteNote.getText().toString().trim();
 
+        if(name.isEmpty()){
+            eteName.setError("Nombre inválido");
+            return false;
+        }
+        if(desc.isEmpty()){
+            eteDesc.setError("Descripción inválido");
+            return false;
+        }
+
+        return true;
+    }
+
+    private void clearForm() {
+        eteName.setError(null);
+        eteDesc.setError(null);
+    }
+
+    private void addNote() {
+        //bd
         NoteEntity noteEntity= new NoteEntity(name,desc,null);
         mListener.getCrudOperations().addNote(noteEntity);
+        //mListener.getCrudOperations().addNote(noteEntity, bdCallback);
+    }
 
+    /*private void bdCallback(){
+        onSuccess(){
+
+        }
+
+        onError(){
+
+        }
+    }*/
+
+    private void closeActivity(){
+        //ui
         getActivity().finish();
-
     }
 }

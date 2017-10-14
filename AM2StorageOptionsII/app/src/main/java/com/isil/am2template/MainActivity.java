@@ -126,8 +126,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Log.v(TAG, "onResumen");
+        Log.v(TAG, "MainActivity onResumen - 2");
         loadData();
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.v(TAG, "MainActivity onPause - 1");
+    }
 }

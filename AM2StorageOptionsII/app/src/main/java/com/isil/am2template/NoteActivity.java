@@ -2,11 +2,8 @@ package com.isil.am2template;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 
 import com.isil.am2template.model.entity.NoteEntity;
 import com.isil.am2template.storage.db.CRUDOperations;
@@ -23,6 +20,7 @@ public class NoteActivity extends AppCompatActivity implements OnNoteListener, M
     public static final  int ADD_NOTE=100;
     public static final  int DETAIL_NOTE=101;
     public static final  int UPDATE_NOTE=102;
+
     private static final String TAG ="NoteActivity";
 
     private AddNoteFragment addNoteFragment= AddNoteFragment.newInstance(null,null);
@@ -82,19 +80,6 @@ public class NoteActivity extends AppCompatActivity implements OnNoteListener, M
         }
     }
 
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        return false;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        return false;
-    }
-
-
     @Override
     public CRUDOperations getCrudOperations() {
         return crudOperations;
@@ -108,6 +93,7 @@ public class NoteActivity extends AppCompatActivity implements OnNoteListener, M
         Bundle bundle= new Bundle();
         bundle.putString("TITLE","¿Deseas eliminar esta nota?");
         bundle.putInt("TYPE",100);
+
         myDialogFragment.setArguments(bundle);
         myDialogFragment.show(getSupportFragmentManager(), "dialog");
     }
@@ -115,7 +101,6 @@ public class NoteActivity extends AppCompatActivity implements OnNoteListener, M
     @Override
     public void editNote(NoteEntity noteEntity) {
         crudOperations.updateNote(noteEntity);
-        finish();
     }
 
     @Override
@@ -123,6 +108,7 @@ public class NoteActivity extends AppCompatActivity implements OnNoteListener, M
         Log.v(TAG, "dialog positive");
         if(currentNote!=null) {
             crudOperations.deleteNote(currentNote);
+            currentNote=null;
             finish();
         }
     }

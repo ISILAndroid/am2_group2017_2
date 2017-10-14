@@ -30,6 +30,8 @@ public class DetailsFragment extends Fragment {
     private OnNoteListener mListener;
     private NoteEntity noteEntity;
 
+    private  String editNoteName, editNoteDesc;
+
     // TODO: Rename and change types and number of parameters
     public static DetailsFragment newInstance(String param1, String param2) {
         DetailsFragment fragment = new DetailsFragment();
@@ -107,14 +109,36 @@ public class DetailsFragment extends Fragment {
         btnEditNote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                String name=   ((EditText)getView().findViewById(R.id.eteName)).getText().toString();
-                String desc= ((EditText)getView().findViewById(R.id.eteDesc)).getText().toString();
-                int id = noteEntity.getId();
-                NoteEntity editNoteEntity= new NoteEntity(id,name,desc,null);
-
-                mListener.editNote(editNoteEntity);
+                if(validateForm()){
+                    editNote();
+                    closeActivity();
+                }
             }
         });
+    }
+
+    private void editNote(){
+        //base de datos
+        int id = noteEntity.getId();
+        NoteEntity editNoteEntity= new NoteEntity(id,editNoteName,editNoteDesc,null);
+        mListener.editNote(editNoteEntity);
+    }
+
+    private boolean validateForm(){
+        //ui
+        editNoteName=   ((EditText)getView().findViewById(R.id.eteName)).getText().toString();
+        editNoteDesc= ((EditText)getView().findViewById(R.id.eteDesc)).getText().toString();
+
+        if(editNoteName.isEmpty()){
+            return false;
+        }
+        if(editNoteDesc.isEmpty()){
+            return false;
+        }
+        return true;
+    }
+
+    private void closeActivity(){
+        getActivity().finish();
     }
 }
