@@ -3,27 +3,28 @@ Curso de Aplicaciones Móviles 2 - Grupo 2017 02
 
 ## Semana 10
 
-	- Conexión Remota
-	- Consumir servicios de una API Restful desde una app Android
-	- Usando Retrofit como cliente HTTP
-	- Ejemplos
+- Conexión Remota
+
+- Consumir servicios de una API Restful desde una app Android
+- Usando Retrofit como cliente HTTP
+- Ejemplos
 
 ## Tools
-	
-	Vamos a utilizar algunas herramientas que nos permitan realizar pruebas de los servicios que vamos a consumir desde nuestra app.
 
-	- Postman
-	Esta herramienta nos permite conectarnos a cualquier API Rest
-	https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop
+Vamos a utilizar algunas herramientas que nos permitan realizar pruebas de los servicios que vamos a consumir desde nuestra app.
 
-	- Visores de Json
-	JsonEditor , nos permite ver de una manera más ordenada la tramas que recibimos de los servicios, que normalmente son JSON. http://jsoneditoronline.org/
+- Postman
+Esta herramienta nos permite conectarnos a cualquier API Rest
+https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop
+
+- Visores de Json
+JsonEditor , nos permite ver de una manera más ordenada la tramas que recibimos de los servicios, que normalmente son JSON. http://jsoneditoronline.org/
 
 ## Configuración del proyecto
 
-	- Primer paso:
+- Primer paso:
 
-	  Para conectarnos a la nube , necesitamos habilitar el permiso de internet. Para esto nos vamos a AndroidManifest y agregarmos el permiso :
+Para conectarnos a la nube , necesitamos habilitar el permiso de internet. Para esto nos vamos a AndroidManifest y agregarmos el permiso :
 
 	```
 		...
@@ -40,17 +41,17 @@ Curso de Aplicaciones Móviles 2 - Grupo 2017 02
         ...
 	```
 
-	- Segundo Paso :
+- Segundo Paso :
 
-		Vamos a agregar la dependencias de algunas librerias que nos ayuden para la conexión y procesar los datos que nos llega de la nube.
+Vamos a agregar la dependencias de algunas librerias que nos ayuden para la conexión y procesar los datos que nos llega de la nube.
 
-		Retrofit : Es un cliente http diseñado para consumir servicios RESTFul , usa anotaciones para declarar las llamadas POST, GET, PUT , etc y tambien cuenta con callbacks para las respuesta a las peticiones hechas al servicio.
+Retrofit : Es un cliente http diseñado para consumir servicios RESTFul , usa anotaciones para declarar las llamadas POST, GET, PUT , etc y tambien cuenta con callbacks para las respuesta a las peticiones hechas al servicio.
 
-		Gson : Esta librería te permite procesar las tramas del respuesta de un servicio(JSON) y poder convertirlas en clases.
+Gson : Esta librería te permite procesar las tramas del respuesta de un servicio(JSON) y poder convertirlas en clases.
 
-		OkHtttp : Sobre esta librería se construyo retrofit y es una librería general para realizar cualquier tipo de conección con un servicio RestFul o SOAP. Tambíen cuenta con ciertos utilitarios para poder visualizar en consola las tramas de envío y de respuesta . 
+OkHtttp : Sobre esta librería se construyo retrofit y es una librería general para realizar cualquier tipo de conección con un servicio RestFul o SOAP. Tambíen cuenta con ciertos utilitarios para poder visualizar en consola las tramas de envío y de respuesta . 
 
-		En el file build.gradle de la app realizamos lo siguiente :
+En el file build.gradle de la app realizamos lo siguiente :
 		
 		```
 			dependencies{
@@ -83,19 +84,19 @@ Curso de Aplicaciones Móviles 2 - Grupo 2017 02
 
 ## Probando los servicios 
 	
-	Antes de realizar las llamadas a los servicios desde la app , es saludable revisar que los servicios estén operativos y corroborar cuales son las tramas de envío ( request) y de respuesta (response).
-	Para esto, vamos a usar POSTMAN
+Antes de realizar las llamadas a los servicios desde la app , es saludable revisar que los servicios estén operativos y corroborar cuales son las tramas de envío ( request) y de respuesta (response).
+Para esto, vamos a usar POSTMAN
 
-	- Rest API
+- Rest API
 
-	En esta oportunidad se ha construido un API Rest usando node.js y mongo.db
-	La url base es :
+En esta oportunidad se ha construido un API Rest usando node.js y mongo.db
+La url base es :
 
 	```
 		https://obscure-earth-55790.herokuapp.com/
 	``
 
-	- Login
+- Login
 
 	Método : POST
 	Path : api/login
@@ -125,7 +126,7 @@ Curso de Aplicaciones Móviles 2 - Grupo 2017 02
 		}
 	```
 
-	- Registro :
+- Registro :
 
 	Método : POST
 	Path : api/users/register
@@ -154,7 +155,7 @@ Curso de Aplicaciones Móviles 2 - Grupo 2017 02
 			}
 		```
 
-	- Usuarios :
+- Usuarios :
 
 	Método : GET
 	Path : api/users/
