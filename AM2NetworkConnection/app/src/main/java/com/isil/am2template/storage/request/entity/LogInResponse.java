@@ -16,7 +16,7 @@ import com.isil.am2template.model.entity.UserEntity;
      "firstname": "Admin",
      "lastname": "Admin",
      "__v": 0
-     }
+ }
  }
 
  */

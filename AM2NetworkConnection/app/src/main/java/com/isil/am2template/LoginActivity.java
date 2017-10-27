@@ -14,6 +14,9 @@ import com.isil.am2template.storage.PreferencesHelper;
 import com.isil.am2template.storage.request.ApiClient;
 import com.isil.am2template.storage.request.entity.LogInRaw;
 import com.isil.am2template.storage.request.entity.LogInResponse;
+import com.isil.am2template.utils.GsonHelper;
+
+import org.json.JSONObject;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -98,7 +101,7 @@ public class LoginActivity extends AppCompatActivity {
                         if(logInResponse!=null){
                             if(logInResponse.getStatus()==200){
                                 Log.v("CONSOLE", "success "+logInResponse);
-                                //saveSession(logInResponse);
+                                saveSession(logInResponse);
                                 gotoMain();
                             }else{
                                 Log.v("CONSOLE", "error "+logInResponse);
@@ -106,16 +109,15 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     }else{
                         Log.v("CONSOLE", "error "+logInResponse);
-
-                        /*JSONObject jsonObject = null;
+                        JSONObject jsonObject = null;
                         try {
-                            jsonObject=new JSONObject (response.errorBody().string());
+                            jsonObject=new JSONObject(response.errorBody().string());
                         }catch (Exception e){
                             jsonObject= new JSONObject();
                         }
 
                         logInResponse= GsonHelper.responseToObject(jsonObject.toString());
-                        showMessage(logInResponse.getMsg());*/
+                        showMessage(logInResponse.getMsg());
                     }
                 }else{
                     showMessage("Ocurrió un error");

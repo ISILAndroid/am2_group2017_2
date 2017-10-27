@@ -82,6 +82,7 @@ public class ApiClient {
     private  static  HttpLoggingInterceptor interceptor(){
         HttpLoggingInterceptor httpLoggingInterceptor= new HttpLoggingInterceptor();
         httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        //httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.HEADERS);
         return httpLoggingInterceptor;
     }
 }

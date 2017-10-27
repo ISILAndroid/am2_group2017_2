@@ -3,6 +3,13 @@ package com.isil.am2template.storage.request.entity;
 /**
  * Created by em on 8/06/16.
  */
+
+/*
+{
+	"username":"admin@admin.com",
+	"password": "123456"
+}
+ */
 public class LogInRaw {
 
     private String username;
