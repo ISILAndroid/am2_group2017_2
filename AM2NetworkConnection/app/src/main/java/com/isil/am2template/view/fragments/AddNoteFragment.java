@@ -11,7 +11,14 @@ import android.widget.EditText;
 
 import com.isil.am2template.R;
 import com.isil.am2template.model.entity.NoteEntity;
+import com.isil.am2template.storage.request.ApiClient;
+import com.isil.am2template.storage.request.entity.NoteRaw;
+import com.isil.am2template.storage.request.entity.NoteResponse;
 import com.isil.am2template.view.listeners.OnNoteListener;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class AddNoteFragment extends Fragment {
@@ -95,11 +102,45 @@ public class AddNoteFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if(validateForm()){
-                    addNote();
-                    closeActivity();
+                    //addNote();
+                    //closeActivity();
+                    addRestNote();
                 }
             }
         });
+    }
+
+    private void addRestNote() {
+        final NoteRaw noteRaw= new NoteRaw();
+        noteRaw.setName(name);
+        noteRaw.setDescription(desc);
+        noteRaw.setUserId("59e0540d429d3f501d6493de");
+
+        Call<NoteResponse> call= ApiClient.getMyApiClient().addNote(noteRaw);
+        call.enqueue(new Callback<NoteResponse>() {
+            @Override
+            public void onResponse(Call<NoteResponse> call, Response<NoteResponse> response) {
+                if(response!=null){
+                    NoteResponse noteResponse=null;
+
+                    if(response.isSuccessful()){
+                        noteResponse= response.body();
+                        if (noteResponse != null) {
+                            savedNote(noteResponse.getData());
+                        }
+
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<NoteResponse> call, Throwable t) {
+            }
+        });
+    }
+
+    private void savedNote(NoteEntity data) {
+        closeActivity();
     }
 
     private boolean validateForm(){
