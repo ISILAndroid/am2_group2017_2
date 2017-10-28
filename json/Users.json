@@ -1,0 +1,96 @@
+{
+    "msg": "success",
+    "status": 200,
+    "data": [
+        {
+            "_id": "59e0540d429d3f501d6493de",
+            "id": "59e0540d429d3f501d6493de",
+            "username": "admin@admin.com",
+            "password": "123456",
+            "firstname": "Admin",
+            "lastname": "Admin",
+            "__v": 0
+        },
+        {
+            "_id": "59e17088225f6f7b12d14b07",
+            "id": "59e17088225f6f7b12d14b07",
+            "username": "demo@demo.com",
+            "password": "123456",
+            "firstname": "Demo",
+            "lastname": "Demo",
+            "__v": 0
+        },
+        {
+            "_id": "59ea8b0f3ad73212009b314b",
+            "id": "59ea8b0f3ad73212009b314b",
+            "username": "demo@admin.com",
+            "password": "123456",
+            "firstname": "Demo",
+            "lastname": "Demo",
+            "__v": 0
+        },
+        {
+            "_id": "59ea9aee739e0e12006eace2",
+            "id": "59ea9aee739e0e12006eace2",
+            "username": "demo@admin.com",
+            "password": "123456",
+            "firstname": "Demo",
+            "lastname": "Demo",
+            "__v": 0
+        },
+        {
+            "_id": "59ea9afb739e0e12006eace3",
+            "id": "59ea9afb739e0e12006eace3",
+            "username": "demo@admin.com",
+            "password": "123456",
+            "firstname": "Demo",
+            "lastname": "Demo",
+            "__v": 0
+        },
+        {
+            "_id": "59ea9afe739e0e12006eace4",
+            "id": "59ea9afe739e0e12006eace4",
+            "username": "demo@admin.com",
+            "password": "123456",
+            "firstname": "Demo",
+            "lastname": "Demo",
+            "__v": 0
+        },
+        {
+            "_id": "59ea9b0f739e0e12006eace5",
+            "id": "59ea9b0f739e0e12006eace5",
+            "username": "demo1@admin.com",
+            "password": "12345",
+            "firstname": "Demo1",
+            "lastname": "Demo1",
+            "__v": 0
+        },
+        {
+            "_id": "59ea9b10739e0e12006eace6",
+            "id": "59ea9b10739e0e12006eace6",
+            "username": "kha@admin.com",
+            "password": "12345612",
+            "firstname": "kha",
+            "lastname": ":V",
+            "__v": 0
+        },
+        {
+            "_id": "59ea9b3c739e0e12006eace7",
+            "id": "59ea9b3c739e0e12006eace7",
+            "username": "demo@peru.com",
+            "password": "1234567*",
+            "firstname": "Alpha",
+            "lastname": "Beta",
+            "__v": 0
+        },
+        {
+            "_id": "59ea9b4d739e0e12006eace8",
+            "id": "59ea9b4d739e0e12006eace8",
+            "username": "demo2@admin.com",
+            "password": "1234567",
+            "firstname": "Demo2",
+            "lastname": "Demo2",
+            "__v": 0
+        }
+    ]
+}
