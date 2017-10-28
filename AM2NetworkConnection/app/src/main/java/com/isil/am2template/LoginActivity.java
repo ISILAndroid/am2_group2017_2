@@ -40,12 +40,14 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void init() {
+        //ui
         eteUsername=(EditText)findViewById(R.id.eteUsername);
         etePassword=(EditText)findViewById(R.id.etePassword);
         btnLogin=(Button)findViewById(R.id.btnLogin);
         btnRegister=(Button)findViewById(R.id.btnRegister);
         flayLoading=findViewById(R.id.flayLoading);
 
+        //events
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -172,5 +174,7 @@ public class LoginActivity extends AppCompatActivity {
         }
         return true;
     }
+
+
 
 }
