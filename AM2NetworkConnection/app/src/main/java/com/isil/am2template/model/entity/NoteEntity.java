@@ -7,15 +7,16 @@ import java.io.Serializable;
  */
 public class NoteEntity implements Serializable {
 
-    private int id;
+    private String id;
     private String name;
     private String description;
     private String path;
+    private String userId;
 
     public NoteEntity() {
     }
 
-    public NoteEntity(int id, String name, String description, String path) {
+    public NoteEntity(String id, String name, String description, String path) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -28,11 +29,11 @@ public class NoteEntity implements Serializable {
         this.path = path;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -60,13 +61,11 @@ public class NoteEntity implements Serializable {
         this.path = path;
     }
 
-    @Override
-    public String toString() {
-        return "NoteEntity{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", path='" + path + '\'' +
-                '}';
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }

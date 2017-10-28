@@ -32,7 +32,7 @@ public class CRUDOperations {
 		 db.close();
 	}
 	
-	public NoteEntity getNote(int id)
+	public NoteEntity getNote(String id)
 	{
 		SQLiteDatabase db = helper.getReadableDatabase(); //modo lectura
 		Cursor cursor = db.query(MyDatabase.TABLE_NOTES,
@@ -44,7 +44,7 @@ public class CRUDOperations {
 		{
 			cursor.moveToFirst();
 		}
-		int nid = Integer.parseInt(cursor.getString(0));
+		String nid = String.valueOf(cursor.getString(0));
 		String name = cursor.getString(1);
 		String desc = cursor.getString(2);
 		String path = cursor.getString(3);
@@ -66,7 +66,7 @@ public class CRUDOperations {
 			do
 			{
 				NoteEntity contact =new NoteEntity();
-				contact.setId(Integer.parseInt(cursor.getString(0)));
+				contact.setId(String.valueOf(cursor.getString(0)));
 				contact.setName(cursor.getString(1));
 				contact.setDescription(cursor.getString(2));
 				contact.setPath(cursor.getString(3));

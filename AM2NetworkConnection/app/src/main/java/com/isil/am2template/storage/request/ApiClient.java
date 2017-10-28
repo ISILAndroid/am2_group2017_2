@@ -1,8 +1,11 @@
 package com.isil.am2template.storage.request;
 
+import com.isil.am2template.model.entity.NoteEntity;
 import com.isil.am2template.model.entity.UserEntity;
 import com.isil.am2template.storage.request.entity.LogInRaw;
 import com.isil.am2template.storage.request.entity.LogInResponse;
+import com.isil.am2template.storage.request.entity.NoteRaw;
+import com.isil.am2template.storage.request.entity.NotesResponse;
 import com.isil.am2template.storage.request.entity.UserRaw;
 import com.isil.am2template.storage.request.entity.UsersResponse;
 
@@ -57,6 +60,15 @@ public class ApiClient {
         //https://obscure-earth-55790.herokuapp.com/api/users
         @GET("/api/users/")
         Call<UsersResponse> users();
+
+        //Notes
+        // https://obscure-earth-55790.herokuapp.com/api/notes/register
+        @POST("/api/notes/register")
+        Call<NoteEntity> addNote(@Body NoteRaw raw);
+
+        // https://obscure-earth-55790.herokuapp.com/api/notes/
+        @GET("/api/notes/")
+        Call<NotesResponse> notes();
 
         /*
         //v1/data/Notes

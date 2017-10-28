@@ -119,7 +119,7 @@ public class DetailsFragment extends Fragment {
 
     private void editNote(){
         //base de datos
-        int id = noteEntity.getId();
+        String id = noteEntity.getId();
         NoteEntity editNoteEntity= new NoteEntity(id,editNoteName,editNoteDesc,null);
         mListener.editNote(editNoteEntity);
     }

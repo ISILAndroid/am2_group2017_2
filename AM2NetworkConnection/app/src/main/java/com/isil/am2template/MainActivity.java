@@ -14,10 +14,16 @@ import com.isil.am2template.model.entity.NoteEntity;
 import com.isil.am2template.storage.PreferencesHelper;
 import com.isil.am2template.storage.db.CRUDOperations;
 import com.isil.am2template.storage.db.MyDatabase;
+import com.isil.am2template.storage.request.ApiClient;
+import com.isil.am2template.storage.request.entity.NotesResponse;
 import com.isil.am2template.utils.StringUtils;
 import com.isil.am2template.view.adapters.NoteAdapter;
 
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -48,6 +54,36 @@ public class MainActivity extends AppCompatActivity {
         noteAdapter= new NoteAdapter(this,lsNoteEntities);
         lstNotes.setAdapter(noteAdapter);
 
+    }
+
+    private void retrieveNotes(){
+        Call<NotesResponse> call= ApiClient.getMyApiClient().notes();
+        call.enqueue(new Callback<NotesResponse>() {
+            @Override
+            public void onResponse(Call<NotesResponse> call, Response<NotesResponse> response) {
+                if(response!=null){
+                    NotesResponse notesResponse=null;
+                    if(response.isSuccessful()){
+                        notesResponse= response.body();
+                        if(notesResponse!=null){
+                            renderNotes(notesResponse.getData());
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<NotesResponse> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private void renderNotes(List<NoteEntity> noteEntityList) {
+        Log.v("CONSOLE", "renderNotes");
+        lsNoteEntities= noteEntityList;
+        noteAdapter= new NoteAdapter(this,lsNoteEntities);
+        lstNotes.setAdapter(noteAdapter);
     }
 
     private void populate() {
@@ -127,7 +163,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         Log.v(TAG, "MainActivity onResumen - 2");
-        loadData();
+        //loadData();
+        retrieveNotes();
     }
 
     @Override
