@@ -5,43 +5,23 @@ Instrutor : Eduardo José Medina Alfaro
 
 e-mail : isil@qd.pe
 
-## Lecciones
+## Ejemplo BackendLess
 
-## Semana 1
+- Backendless https://backendless.com
 
-	- Introducción al usuario.
+- Backendless REST API https://backendless.com/docs/rest/doc.html
 
-## Semana 2
+## Referencias
 
-	- Fragments.
+- HeaderMap
 
-## Semana 3
+https://futurestud.io/tutorials/retrofit-2-dynamic-request-headers-with-headermap
 
-	- Ejemplos sobre fragments.
+- GSON Annotations
 
-## Semana 4
-	
-	- Unidad de Aprendizaje I (UA1)
+http://www.javacreed.com/gson-annotations-example/
 
-## Semana 5
-	
-	- Se hizo la resolución de la Unidad de aprendizaje I (UA1)
+- Keyboard event
 
-## Semana 6
-	
-	- Opciones de Almacenamiento.
-
-	- Preferencias compartidas.
-
-## Semana 7
-	
-	- Opciones de Almacenamiento II.
-
-	- Base de datos SQLITE
-
-	- Unidad de aprendizaje 2 (UA2)
-
-## Semana 8
-	
-	- Examen Parcial
+https://developer.android.com/training/keyboard-input/style.html
 
