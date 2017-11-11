@@ -2,7 +2,6 @@ package com.isil.am2template.presenter;
 
 
 import com.isil.am2template.model.entity.NoteBLEntity;
-import com.isil.am2template.model.entity.NoteEntity;
 
 import java.util.List;
 
@@ -19,6 +18,6 @@ public interface NoteContract {
         void emptyNotes();
         void retrieveNotes();
         void renderNotes(List<NoteBLEntity> notes);
-        void gotoNote(int action, NoteEntity noteEntity);
+        void gotoNote(int action, NoteBLEntity noteEntity);
     }
 }

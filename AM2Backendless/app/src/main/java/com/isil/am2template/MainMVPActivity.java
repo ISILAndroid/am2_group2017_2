@@ -11,13 +11,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.isil.am2template.model.entity.NoteBLEntity;
-import com.isil.am2template.model.entity.NoteEntity;
 import com.isil.am2template.presenter.MainPresenter;
 import com.isil.am2template.presenter.NoteContract;
 import com.isil.am2template.storage.PreferencesHelper;
 import com.isil.am2template.storage.db.CRUDOperations;
 import com.isil.am2template.utils.StringUtils;
-import com.isil.am2template.view.adapters.NoteAdapter;
 import com.isil.am2template.view.adapters.NoteBLAdapter;
 
 import java.util.List;
@@ -78,7 +76,7 @@ public class MainMVPActivity extends AppCompatActivity implements NoteContract.N
     }
 
     @Override
-    public void gotoNote(int action, NoteEntity noteEntity) {
+    public void gotoNote(int action, NoteBLEntity noteEntity) {
         Intent intent= new Intent(this,NoteActivity.class);
 
         switch (action)
@@ -127,7 +125,7 @@ public class MainMVPActivity extends AppCompatActivity implements NoteContract.N
         lstNotes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                NoteEntity noteEntity = (NoteEntity) adapterView.getAdapter().getItem(i);
+                NoteBLEntity noteEntity = (NoteBLEntity) adapterView.getAdapter().getItem(i);
                 gotoNote(ACTION_DETAIL, noteEntity);
             }
         });

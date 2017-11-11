@@ -56,8 +56,7 @@ public class PreferencesHelper {
 
     public static boolean isSignedIn(Context context) {
         final SharedPreferences preferences = getSharedPreferences(context);
-        return preferences.contains(PREFERENCES_USERNAME) &&
-                preferences.contains(PREFERENCES_PASSWORD);
+        return preferences.contains(PREFERENCES_USERNAME);
     }
 
     private static SharedPreferences.Editor getEditor(Context context) {

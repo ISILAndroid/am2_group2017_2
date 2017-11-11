@@ -3,6 +3,13 @@ package com.isil.am2template.storage.request.entity;
 /**
  * Created by em on 8/06/16.
  */
+
+/*
+{
+  "login":"admin@gmail.com",
+  "password":"123456"
+}
+ */
 public class LogInBLRaw {
 
     private String login;

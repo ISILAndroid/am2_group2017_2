@@ -108,6 +108,7 @@ public class LoginMVPActivity extends AppCompatActivity implements LoginContract
         //savePreferences();
         Intent intent= new Intent(this,MainMVPActivity.class);
         startActivity(intent);
+        finish();
     }
 
     @Override

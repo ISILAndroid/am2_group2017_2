@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import com.isil.am2template.model.entity.NoteBLEntity;
 import com.isil.am2template.model.entity.NoteEntity;
 import com.isil.am2template.storage.db.CRUDOperations;
 import com.isil.am2template.storage.db.MyDatabase;
@@ -26,7 +27,7 @@ public class NoteActivity extends AppCompatActivity implements OnNoteListener, M
     private AddNoteFragment addNoteFragment= AddNoteFragment.newInstance(null,null);
     private DetailsFragment detailsFragment= DetailsFragment.newInstance(null,null);
     private int fragmentSelected= DETAIL_NOTE;
-    private NoteEntity noteEntity;
+    private NoteBLEntity noteEntity;
     private NoteEntity currentNote;
 
 
@@ -48,7 +49,7 @@ public class NoteActivity extends AppCompatActivity implements OnNoteListener, M
         if(getIntent().getExtras()!=null)
         {
             fragmentSelected= getIntent().getExtras().getInt("FRAGMENT",DETAIL_NOTE);
-            noteEntity= (NoteEntity)getIntent().getExtras().getSerializable("NOTE");
+            noteEntity= (NoteBLEntity)getIntent().getExtras().getSerializable("NOTE");
         }
     }
 

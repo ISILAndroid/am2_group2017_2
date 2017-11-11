@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.isil.am2template.R;
+import com.isil.am2template.model.entity.NoteBLEntity;
 import com.isil.am2template.model.entity.NoteEntity;
 import com.isil.am2template.view.listeners.OnNoteListener;
 
@@ -28,7 +29,7 @@ public class DetailsFragment extends Fragment {
     private String mParam2;
 
     private OnNoteListener mListener;
-    private NoteEntity noteEntity;
+    private NoteBLEntity noteEntity;
 
     private  String editNoteName, editNoteDesc;
 
@@ -88,12 +89,12 @@ public class DetailsFragment extends Fragment {
 
         if(getArguments()!=null)
         {
-            noteEntity= (NoteEntity)getArguments().getSerializable("NOTE");
+            noteEntity= (NoteBLEntity) getArguments().getSerializable("NOTE");
         }
         if(noteEntity!=null)
         {
             //TODO mostrar INFO
-            String name= noteEntity.getName().toString();
+            String name= noteEntity.getTitle().toString();
             String desc= noteEntity.getDescription().toString();
 
             ((EditText)getView().findViewById(R.id.eteName)).setText(name);
@@ -103,7 +104,7 @@ public class DetailsFragment extends Fragment {
         btnDeleteNote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mListener.deleteNote(noteEntity);
+                //mListener.deleteNote(noteEntity);
             }
         });
         btnEditNote.setOnClickListener(new View.OnClickListener() {
@@ -119,7 +120,7 @@ public class DetailsFragment extends Fragment {
 
     private void editNote(){
         //base de datos
-        String id = noteEntity.getId();
+        String id = noteEntity.getObjectId();
         NoteEntity editNoteEntity= new NoteEntity(id,editNoteName,editNoteDesc,null);
         mListener.editNote(editNoteEntity);
     }

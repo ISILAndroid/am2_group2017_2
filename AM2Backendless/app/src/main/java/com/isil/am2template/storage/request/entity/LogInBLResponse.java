@@ -7,33 +7,34 @@ import com.google.gson.annotations.SerializedName;
  */
 /*
 {
-    "updated": 1510343508518,
-    "ownerId": "B0254EE8-CC3E-EDD8-FF5A-423577F08F00",
-    "email": "admin@admin.com",
-    "created": 1510343190008,
-    "objectId": "B0254EE8-CC3E-EDD8-FF5A-423577F08F00",
+    "ownerId": "7AD2B842-910E-ECE7-FF1B-B9DFFF6E0800",
+    "email": "admin@gmail.com",
+    "objectId": "7AD2B842-910E-ECE7-FF1B-B9DFFF6E0800",
+    "lastname": "Admin",
+    "updated": 1510359887344,
     "name": "Admin",
+    "created": 1510359816663,
     "userStatus": "ENABLED",
-    "lastLogin": 1510343514314,
+    "lastLogin": 1510360415974,
     "___class": "Users",
-    "__meta": "{\"relationRemovalIds\":{},\"selectedProperties\":[\"password\",\"updated\",\"ownerId\",\"email\",\"created\",\"objectId\",\"name\",\"userStatus\",\"lastLogin\",\"__updated__meta\",\"___class\"],\"relatedObjects\":{}}",
-    "user-token": "5E6732BF-CFF9-72E6-FF19-1C0145061A00"
+    "__meta": "{\"relationRemovalIds\":{},\"selectedProperties\":[\"ownerId\",\"email\",\"objectId\",\"lastname\",\"updated\",\"name\",\"password\",\"created\",\"userStatus\",\"lastLogin\",\"__updated__meta\",\"___class\"],\"relatedObjects\":{}}",
+    "user-token": "73034DA7-61AE-331B-FF73-2BA295394400"
 }
  */
 public class LogInBLResponse {
-    private String ownerId;
+    private String objectId;
     private String email;
     private String name;
 
     @SerializedName("user-token")
     private String token;
 
-    public String getOwnerId() {
-        return ownerId;
+    public String getObjectId() {
+        return objectId;
     }
 
-    public void setOwnerId(String ownerId) {
-        this.ownerId = ownerId;
+    public void setObjectId(String objectId) {
+        this.objectId = objectId;
     }
 
     public String getEmail() {
