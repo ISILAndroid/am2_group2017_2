@@ -10,18 +10,13 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.isil.am2template.R;
-import com.isil.am2template.model.entity.NoteEntity;
-import com.isil.am2template.storage.request.ApiClient;
-import com.isil.am2template.storage.request.entity.NoteRaw;
-import com.isil.am2template.storage.request.entity.NoteResponse;
+import com.isil.am2template.presenter.AddNoteContract;
+import com.isil.am2template.presenter.AddNotePresenter;
+import com.isil.am2template.storage.PreferencesHelper;
 import com.isil.am2template.view.listeners.OnNoteListener;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
-
-public class AddNoteFragment extends Fragment {
+public class AddNoteFragment extends Fragment  implements AddNoteContract.View{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -41,6 +36,7 @@ public class AddNoteFragment extends Fragment {
     private String mParam2;
 
     private OnNoteListener mListener;
+    private AddNotePresenter addNotePresenter;
 
     // TODO: Rename and change types and number of parameters
     public static AddNoteFragment newInstance(String param1, String param2) {
@@ -93,6 +89,7 @@ public class AddNoteFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        setUpPresenter();
         eteName=(EditText)getView().findViewById(R.id.eteName);
         eteDesc=(EditText)getView().findViewById(R.id.eteDesc);
         eteNote=(EditText)getView().findViewById(R.id.eteNote);
@@ -102,45 +99,29 @@ public class AddNoteFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if(validateForm()){
-                    //addNote();
-                    //closeActivity();
-                    addRestNote();
+                    addRestBLNote();
                 }
             }
         });
     }
 
-    private void addRestNote() {
-        final NoteRaw noteRaw= new NoteRaw();
-        noteRaw.setName(name);
-        noteRaw.setDescription(desc);
-        noteRaw.setUserId("59e0540d429d3f501d6493de");
+    private void addRestBLNote() {
+        String token= PreferencesHelper.getTokenSession(getActivity());
+        addNotePresenter.add(token,name,desc);
 
-        Call<NoteResponse> call= ApiClient.getMyApiClient().addNote(noteRaw);
-        call.enqueue(new Callback<NoteResponse>() {
-            @Override
-            public void onResponse(Call<NoteResponse> call, Response<NoteResponse> response) {
-                if(response!=null){
-                    NoteResponse noteResponse=null;
-
-                    if(response.isSuccessful()){
-                        noteResponse= response.body();
-                        if (noteResponse != null) {
-                            savedNote(noteResponse.getData());
-                        }
-
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<NoteResponse> call, Throwable t) {
-            }
-        });
     }
 
-    private void savedNote(NoteEntity data) {
-        closeActivity();
+    private void  setUpPresenter(){
+        addNotePresenter= new AddNotePresenter();
+        addNotePresenter.attachView(this);
+    }
+
+    private void exit(){
+        getActivity().finish();
+    }
+    @Override
+    public void operationSuccess() {
+        exit();
     }
 
     private boolean validateForm(){
@@ -167,25 +148,17 @@ public class AddNoteFragment extends Fragment {
         eteDesc.setError(null);
     }
 
-    private void addNote() {
-        //bd
-        NoteEntity noteEntity= new NoteEntity(name,desc,null);
-        mListener.getCrudOperations().addNote(noteEntity);
-        //mListener.getCrudOperations().addNote(noteEntity, bdCallback);
+
+    @Override
+    public void showMessage(String message) {
     }
 
-    /*private void bdCallback(){
-        onSuccess(){
-
-        }
-
-        onError(){
-
-        }
-    }*/
-
-    private void closeActivity(){
-        //ui
-        getActivity().finish();
+    @Override
+    public void showLoading() {
     }
+
+    @Override
+    public void hideLoading() {
+    }
+
 }

@@ -11,11 +11,16 @@ import android.widget.EditText;
 
 import com.isil.am2template.R;
 import com.isil.am2template.model.entity.NoteBLEntity;
-import com.isil.am2template.model.entity.NoteEntity;
+import com.isil.am2template.presenter.RemoveNoteContract;
+import com.isil.am2template.presenter.RemoveNotePresenter;
+import com.isil.am2template.presenter.UpdateNoteContract;
+import com.isil.am2template.presenter.UpdateNotePresenter;
+import com.isil.am2template.storage.PreferencesHelper;
 import com.isil.am2template.view.listeners.OnNoteListener;
 
 
-public class DetailsFragment extends Fragment {
+public class DetailsFragment extends Fragment implements  RemoveNoteContract.View,
+        UpdateNoteContract.View{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -32,6 +37,8 @@ public class DetailsFragment extends Fragment {
     private NoteBLEntity noteEntity;
 
     private  String editNoteName, editNoteDesc;
+    private RemoveNotePresenter removeNotePresenter;
+    private UpdateNotePresenter updateNotePresenter;
 
     // TODO: Rename and change types and number of parameters
     public static DetailsFragment newInstance(String param1, String param2) {
@@ -84,6 +91,7 @@ public class DetailsFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        setUpPresenter();
         btnDeleteNote=(Button)getView().findViewById(R.id.btnDeleteNote);
         btnEditNote=(Button)getView().findViewById(R.id.btnEditNote);
 
@@ -104,26 +112,40 @@ public class DetailsFragment extends Fragment {
         btnDeleteNote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //mListener.deleteNote(noteEntity);
+                deleteNote();
             }
         });
         btnEditNote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(validateForm()){
-                    editNote();
-                    closeActivity();
+                   editNote();
                 }
             }
         });
     }
 
     private void editNote(){
-        //base de datos
-        String id = noteEntity.getObjectId();
-        NoteEntity editNoteEntity= new NoteEntity(id,editNoteName,editNoteDesc,null);
-        mListener.editNote(editNoteEntity);
+        String token= PreferencesHelper.getTokenSession(getActivity());
+        String objectId= noteEntity.getObjectId();
+        updateNotePresenter.update(token,objectId,editNoteName,editNoteDesc);
     }
+
+    private void deleteNote(){
+        String token= PreferencesHelper.getTokenSession(getActivity());
+        String objectId= noteEntity.getObjectId();
+        removeNotePresenter.remove(token,objectId);
+    }
+
+    private void  setUpPresenter(){
+        removeNotePresenter= new RemoveNotePresenter();
+        removeNotePresenter.attachView(this);
+
+        updateNotePresenter= new UpdateNotePresenter();
+        updateNotePresenter.attachView(this);
+    }
+
+
 
     private boolean validateForm(){
         //ui
@@ -141,5 +163,30 @@ public class DetailsFragment extends Fragment {
 
     private void closeActivity(){
         getActivity().finish();
+    }
+
+    @Override
+    public void showMessage(String message) {
+        closeActivity();
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
+    }
+
+    @Override
+    public void updateOperationSuccess() {
+        closeActivity();
+    }
+
+    @Override
+    public void removeOperationSuccess() {
+        closeActivity();
     }
 }

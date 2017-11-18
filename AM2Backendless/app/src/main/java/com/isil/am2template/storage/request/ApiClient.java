@@ -5,6 +5,7 @@ import com.isil.am2template.storage.request.entity.LogInBLRaw;
 import com.isil.am2template.storage.request.entity.LogInBLResponse;
 import com.isil.am2template.storage.request.entity.LogInRaw;
 import com.isil.am2template.storage.request.entity.LogInResponse;
+import com.isil.am2template.storage.request.entity.NoteBLRaw;
 import com.isil.am2template.storage.request.entity.NoteRaw;
 import com.isil.am2template.storage.request.entity.NoteResponse;
 import com.isil.am2template.storage.request.entity.NotesBLResponse;
@@ -20,9 +21,11 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.HeaderMap;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 
@@ -67,6 +70,31 @@ public class ApiClient {
         @GET("/{applicationid}/{restapikey}/data/Note")
         Call<NotesBLResponse> notesbl(@Path("applicationid") String appID,
                                       @Path("restapikey") String restApiKEY, @HeaderMap Map<String, String> headers);
+
+
+        //Create Note
+        //https://api.backendless.com/<application-id>/<REST-api-key>/data/<table-name>
+        @POST("/{applicationid}/{restapikey}/data/Note")
+        Call<Object> addNoteBL(@Path("applicationid") String appID,
+                               @Path("restapikey") String restApiKEY, @HeaderMap Map<String, String> headers,
+                               @Body NoteBLRaw noteBLRaw);
+
+        //Delete Note
+        //https://api.backendless.com/<application-id>/<REST-api-key>/data/<table-name>/<object-id>
+        @DELETE("/{applicationid}/{restapikey}/data/Note/{objectId}")
+        Call<Object> deleteNoteBL(@Path("applicationid") String appID,
+                               @Path("restapikey") String restApiKEY, @HeaderMap Map<String, String> headers,
+                               @Path("objectId")String objectId);
+
+        //Update Note
+        //https://api.backendless.com/<application-id>/<REST-api-key>/data/<table-name>/<object-id>
+
+        @PUT("/{applicationid}/{restapikey}/data/Note/{objectId}")
+        Call<Object> updateNoteBL(@Path("applicationid") String appID,
+                                  @Path("restapikey") String restApiKEY, @HeaderMap Map<String, String> headers,
+                                  @Path("objectId")String objectId,@Body NoteBLRaw noteBLRaw);
+
+
 
         //--------------------------------------------------------
         //https://obscure-earth-55790.herokuapp.com/api/login
