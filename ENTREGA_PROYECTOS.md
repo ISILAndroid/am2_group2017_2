@@ -4,6 +4,8 @@
 
 * El proyecto debe estar operativo y sin errores.
 
+* El proyecto se debe entregar consolidado, no por partes. No se va recibir el proyecto separado.
+
 * Se va a preguntar a todos los miembros del equipo sobre todo el proyecto.
 
 * El código debe estar en github , en google drive u otro medio (no físico) para poder llevarmelo con la última versión.
